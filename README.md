@@ -16,7 +16,7 @@ A lightweight Python command-line interface (CLI) database application designed 
 
 - ⚠️ **No Edit/Update Support:** Records are permanent once added. Updating or deleting existing roll numbers is not currently supported.
 - 🔮 **Planned Feature:** Add `update` and `delete` commands to enable full record management.
--  Add option to save the data in user named database in one .py file.
+-                         Add option to save the data in user named `database` in one .py file.
 ## 🛠️ Project Structure
 
 ```text
