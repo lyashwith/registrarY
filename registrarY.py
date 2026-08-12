@@ -50,15 +50,23 @@ def search_database():
         print(f"      Father Name : {database[roll_no]['father_name']}")
         print(f"      Mother Name : {database[roll_no]['mother_name']}")
         print("-" * 40)
-option=str(input(""""What do you want to do? 
-(1) Create Database
-    to create type 'create'
-(2) Search Database
-    to search type 'search'
-"""))
-if option.lower()=="create":
-    create_database()
-elif option.lower()=="search":
-    search_database()
-else:
-    print("input valid option create/search")
+while True:
+    option=str(input(""""What do you want to do? 
+    (1) Create Database
+        to create type 'create'
+    (2) Search Database
+        to search type 'search'
+    (3) Exit
+        to exit type 'exit'
+    """))
+    if option.lower()=="create":
+        create_database()
+    elif option.lower()=="search":
+        search_database()
+    elif option.lower()=="exit":
+        print("""Kicking you out of the program......
+DONE.""")
+        break
+    else:
+        print("input valid option create/search")
+    print("-" * 40)
