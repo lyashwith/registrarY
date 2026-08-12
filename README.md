@@ -12,7 +12,10 @@ A lightweight Python command-line interface (CLI) database application designed 
 - **Persistent Local Storage:** Saves database records locally in `database.py` for retrieval across sessions.
 
 ---
+## 📌 Current Limitations & Future Roadmap
 
+- ⚠️ **No Edit/Update Support:** Records are permanent once added. Updating or deleting existing roll numbers is not currently supported.
+- 🔮 **Planned Feature:** Add `update` and `delete` commands to enable full record management.
 ## 🛠️ Project Structure
 
 ```text
