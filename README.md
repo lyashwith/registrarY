@@ -19,7 +19,7 @@ A lightweight Python command-line interface (CLI) database application designed 
 - Add option to save the data in user named `database` in one .py file.
 ## 🛠️ Project Structure
 
-```text
+text
 registrarY/
 ├── registrarY.py      # Main CLI application script
 ├── database.py        # Local database storage file
