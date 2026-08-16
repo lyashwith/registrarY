@@ -35,7 +35,17 @@ def create_default_database():
     python_file_content = f"database = {database}"
     with open("database.py", "w") as file:
         file.write(python_file_content)
-
+def view_all():
+    from database import database
+    print("-" * 40)
+    for roll_no, details in database.items():
+            print(f"      Roll Number: {roll_no}")
+            print("-" * 40)
+            print(f"      Name         : {details['Name']}")
+            print(f"      Date of Birth: {details['date_of_birth']}")
+            print(f"      Father's Name: {details['father_name']}")
+            print(f"      Mother's Name: {details['mother_name']}")
+            print("-" * 40)
 def search_database():
     from database import database
 
@@ -91,25 +101,28 @@ def update_database():
               
 while True:
     option=str(input(""""What do you want to do? 
-    (1) Create default Database
-    (2) Search Database
-    (3) Update Database
-    (4) Help
-    (5) Exit
+    (1) Create default 
+    (2) View all 
+    (3) Search 
+    (4) Update 
+    (5) Help
+    (6) Exit
 """))
     if option.lower()=="create_default" or option=="1":
         create_default_database()
-    elif option.lower()=="search" or option=="2":
+    elif option.lower()=="view_all" or option=="2":
+        view_all()
+    elif option.lower()=="search" or option=="3":
         search_database()
-    elif option.lower()=="update" or option=="3":
+    elif option.lower()=="update" or option=="4":
         update_database()
-    elif option.lower()=="help" or option=="4":
+    elif option.lower()=="help" or option=="5":
         print("""(1) Create default Database: This option allows you to create a default database by entering the number of entries you want to add. You will be prompted to enter the name, date of birth, father's name, and mother's name for each entry. The roll number will be generated automatically based on the number of entries.)
 (2) Search Database: This option allows you to search for a specific entry in the database by entering the roll number. If the roll number is found, the details of the entry will be displayed.
 (3) Update Database: This option allows you to update the details of a specific entry in the database by entering the roll number. You will be prompted to enter the new details for the entry, and you can choose to keep the original values by pressing the ENTER key.
 (4) Help: This option provides information about the available options in the program.
 (5) Exit: This option allows you to exit the program.""")
-    elif option.lower()=="exit" or option=="5":
+    elif option.lower()=="exit" or option=="6":
         print("""Kicking you out of the program......
 DONE.""")
         break
