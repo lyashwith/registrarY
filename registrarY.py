@@ -16,19 +16,14 @@ def create_default_database():
             fname=input("Enter the father's name: ")
             mname=input("Enter the mother's name: ")
             detail_set= {"Name":name,"date_of_birth": dob,"father_name": fname,"mother_name": mname}
-            count = 0
-            for letter in alphabet:
-                for number in range(1, 1001):
-                    roll_number = letter+f"{number:04d}"
-                    count+=1
-                    if count ==(i+1):
-                        break
-                if count ==(i+1):
-                    break
-            data={}
-            data[roll_number]=detail_set
 
-            print(roll_number)
+            letter_index = i // 1000
+            number = (i % 1000) + 1
+            roll_no = alphabet[letter_index] + f"{number:04d}"
+            data={}
+            data[roll_no]=detail_set
+
+            print(roll_no)
             database.update(data)
 
     print(database)
