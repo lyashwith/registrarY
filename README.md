@@ -44,6 +44,6 @@ registrarY/
 └── README.md          # Project documentation
 ```
 
-<a href="https://github.com/lyashwith/registrarY">
+<a href="https://github.com/lyashwith">
   <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub Logo" width="40">
 </a>
