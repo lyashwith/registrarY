@@ -46,6 +46,5 @@ registrarY/
 └── README.md          # Project documentation
 ```
 <a href="https://github.com/lyashwith">
-  <picture>
-    <img src="https://github.com/lyashwith.png" alt="Yashwith L" width="60" height="60" align="left" style="border-radius: 50%;">
-  </picture>
+  <img src="https://github.com/lyashwith.png" width="50" height="50" alt="GitHub Logo" align="center">
+</a>
