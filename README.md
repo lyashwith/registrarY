@@ -1,6 +1,6 @@
 # registrarY
 
-[![Download Windows EXE](https://img.shields.io/badge/registrarY.exe_(v1.2beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2Beta/registrarY.exe)
+[![Download Executable](https://img.shields.io/badge/registrarY.exe_(v1.2beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2Beta/registrarY.exe)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repository-181717?style=flat&size=large&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY)
 [![Download Source Code](https://img.shields.io/badge/Download-Source_Code_.ZIP-24292E?style=flat&size=large&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/tags/v1.2Beta.zip)
 
