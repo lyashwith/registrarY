@@ -45,5 +45,5 @@ registrarY/
 ```
 
 <a href="https://github.com/lyashwith/registrarY">
-  <img src="https://avatars.githubusercontent.com/u/313887780?v=4" alt="GitHub Logo" width="50">
+  <img src="https://avatars.githubusercontent.com/u/313887780?v=4" alt="GitHub Logo" width="50" style="border-radius: 50%;">
 </a>
