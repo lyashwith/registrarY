@@ -1,6 +1,6 @@
 # registrarY
 
-[![Download Executable](https://img.shields.io/badge/Download_Windows_.EXE-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2Beta/registrarY.exe)
+[![Download Executable](https://img.shields.io/badge/Download_Windows_.EXE-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2Beta/registrarY.exe)
 [![Download Source Code](https://img.shields.io/badge/Download_Source_Code_.ZIP-24292E?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/tags/v1.2Beta.zip)
 
 A lightweight Python command-line interface (CLI) database application designed to generate, store, search, and update student records using structured, sequential roll numbers.
