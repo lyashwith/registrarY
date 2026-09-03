@@ -1,3 +1,4 @@
+import ast
 def create_default_database():
     num_entry=int(input("Enter the number of entries you want to add: "))
         
@@ -27,38 +28,45 @@ def create_default_database():
             database.update(data)
 
     print(database)
-    python_file_content = f"database = {database}"
+    python_file_content =str(database)
     with open("database.py", "w") as file:
         file.write(python_file_content)
+
+
+def load_database():
+    with open("database.py", "r") as file:
+        content = file.read()
+    return ast.literal_eval(content.strip())
+
 def view_all():
-    from database import database
-    print("-" * 40)
+    database = load_database()
+    print("=" * 100)
     for roll_no, details in database.items():
             print(f"      Roll Number: {roll_no}")
-            print("-" * 40)
+            print("-" * 100)
             print(f"      Name         : {details['Name']}")
             print(f"      Date of Birth: {details['date_of_birth']}")
             print(f"      Father's Name: {details['father_name']}")
             print(f"      Mother's Name: {details['mother_name']}")
-            print("-" * 40)
+            print("_" * 100)
 def search_database():
-    from database import database
+    database=load_database()
 
     roll_no = input("Enter roll number to search: ")
 
     if roll_no in database:
-        print("-" * 40)
+        print("=" * 100)
         print(f"      Roll Number: {roll_no}")
-        print("-" * 40)
+        print("-" * 100)
         print(f"      Name        : {database[roll_no]['Name']}")
         print(f"      DOB         : {database[roll_no]['date_of_birth']}")
         print(f"      Father Name : {database[roll_no]['father_name']}")
         print(f"      Mother Name : {database[roll_no]['mother_name']}")
-        print("-" * 40)
+        print("_" * 100)
     else:
         print("roll number",roll_no,"not found in tha database")
 def update_database():
-    from database import database
+    database=load_database()
     
     roll_no = input("Enter roll number to search: ")
         
@@ -86,10 +94,18 @@ def update_database():
         if mname!="":
             database[roll_no]["mother_name"]=mname
         
-        python_file_content = f"database = {database}"
+        python_file_content =str(database)
         with open("database.py", "w") as file:
             file.write(python_file_content)
-        print("database updated")
+        print("Database Updated")
+        print("-" * 40)
+        print(f"      Roll Number: {roll_no}")
+        print("-" * 40)
+        print(f"      Name        : {database[roll_no]['Name']}")
+        print(f"      DOB         : {database[roll_no]['date_of_birth']}")
+        print(f"      Father Name : {database[roll_no]['father_name']}")
+        print(f"      Mother Name : {database[roll_no]['mother_name']}")
+        print("-" * 40)
     else:
         print("roll number",roll_no,"not found in tha database")
 
@@ -123,4 +139,4 @@ DONE.""")
         break
     else:
         print("input valid option create/search")
-    print("-" * 40)
+    print("#" * 100)
