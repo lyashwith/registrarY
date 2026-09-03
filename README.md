@@ -49,4 +49,3 @@ registrarY/
   <picture>
     <img src="https://github.com/lyashwith.png" alt="Yashwith L" width="60" height="60" align="left" style="border-radius: 50%;">
   </picture>
-</a>
