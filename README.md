@@ -9,21 +9,29 @@ A lightweight Python command-line interface (CLI) database application designed 
 
 ## 🚀 Features
 
-* **Interactive Navigation Menu:** Seamlessly switch between creating entries, viewing records, searching, updating details, help, and exiting.
-* **Automated Roll Number Generation:** Generates sequential roll numbers (e.g., `A0001`, `A0002`) based on entry index.
-* **Safe Local Data Storage:** Saves data directly as dictionary literals in `database.py` and parses them back safely using Python's `ast.literal_eval`.
-* **Record Display & Search:** Retrieve specific student details by roll number or view the complete database at once.
-* **In-Place Updates:** Update specific fields (Name, DOB, Parents' names) while preserving unchanged values by pressing Enter.
+- **Interactive Navigation Menu:** Seamlessly switch between creating entries, viewing records, searching, updating details, help, and exiting.
+- **Automated Roll Number Generation:** Generates sequential roll numbers (e.g., `A0001`, `A0002`) based on entry index.
+- **Safe Local Data Storage:** Saves data directly as dictionary literals in `database.py` and parses them back safely using Python's `ast.literal_eval`.
+- **Record Display & Search:** Retrieve specific student details by roll number or view the complete database at once.
+- **In-Place Updates:** Update specific fields while preserving unchanged values by pressing Enter.
+
+---
+
+## 🗺️ Roadmap & Upcoming Features
+
+- **Custom Schemas / User-Defined Fields:** Enable users to define custom record attributes, allowing for dynamic data schemas tailored to specific storage requirements rather than relying on fixed default structures.
+- **Dynamic File Creation:** Automatically create missing database files to prevent startup errors.
+- **Input Validation:** Prevent crashes from non-numeric or malformed user inputs during database operations.
 
 ---
 
 ## 🐛 Known Issues & Limitations (v1.2 Beta)
 
-* **Missing File Handling (`FileNotFoundError`):** Calling **View**, **Search**, or **Update** before running **Create default** crashes the program if `database.py` does not exist yet.
-* **Overwriting Data:** Option `(1) Create default` completely overwrites `database.py` instead of appending new student records to existing ones.
-* **Unvalidated Input:** Non-numeric input for the entry count will trigger a `ValueError` crash instead of prompting the user again.
-* **Redundant Loop Condition:** The check `if num_entry <= 0:` inside the `for` loop in `create_default_database()` is redundant because the outer `else` block already ensures `num_entry > 0`.
-* **Typos in CLI Messages:** Minor typos in user strings (e.g., `"not found in tha database"` instead of `"the database"`).
+- **Missing File Handling (`FileNotFoundError`):** Calling *View*, *Search*, or *Update* before running *Create default* crashes the program if `database.py` does not exist yet.
+- **Overwriting Data:** Option (1) *Create default* completely overwrites `database.py` instead of appending new student records to existing ones.
+- **Unvalidated Input:** Non-numeric input for the entry count will trigger a `ValueError` crash instead of prompting the user again.
+- **Redundant Loop Condition:** The check `if num_entry <= 0:` inside the `for` loop in `create_default_database()` is redundant because the outer `else` block already ensures `num_entry > 0`.
+- **Typos in CLI Messages:** Minor typos in user strings (e.g., *"not found in tha database"* instead of *"the database"*).
 
 ---
 
@@ -34,8 +42,6 @@ registrarY/
 ├── registrarY.py      # Main CLI application script
 ├── database.py        # Local data storage file (dictionary literal)
 └── README.md          # Project documentation
-
-
 
 
 https://github.com/lyashwith/registrarY
