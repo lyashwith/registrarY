@@ -42,6 +42,8 @@ registrarY/
 ├── registrarY.py      # Main CLI application script
 ├── database.py        # Local data storage file (dictionary literal)
 └── README.md          # Project documentation
+```
 
-
-https://github.com/lyashwith/registrarY
+<a href="https://github.com/lyashwith/registrarY">
+  <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub Logo" width="40">
+</a>
