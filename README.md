@@ -43,7 +43,8 @@ registrarY/
 ├── database.py        # Local data storage file (dictionary literal)
 └── README.md          # Project documentation
 ```
-
 <a href="https://github.com/lyashwith">
-  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
+  <picture>
+    <img src="https://github.com/lyashwith.png" alt="Yashwith L" width="60" height="60" align="left" style="border-radius: 50%;">
+  </picture>
 </a>
