@@ -1,0 +1,156 @@
+Free Use, No-Sale License (FUNSL) v1.0
+
+Copyright © 2026 Yashwith L. All rights reserved.
+
+Project: registrarY
+Author: Yashwith L.
+Repository: https://github.com/lyashwith/registrarY
+
+---
+
+1. Grant of Permission
+
+Subject to the terms of this License, permission is granted to any person obtaining a copy of registrarY ("Software") to:
+
+- Use the Software for personal, educational, research, or commercial purposes.
+- Run the Software without paying a license fee.
+- Copy the Software for personal or internal organizational use.
+- Modify the Software for private or internal use.
+- Use modified versions privately, including for commercial purposes.
+
+This License applies to the Python source code and compiled/distributed versions of registrarY, including executables produced using PyInstaller.
+
+2. Attribution
+
+Any redistribution of the Software must retain:
+
+1. The copyright notice;
+2. This License; and
+3. Clear attribution to Yashwith L. as the original author.
+
+The Software must not be presented as having originally been created by another person.
+
+Where reasonably possible, attribution should include:
+
+"registrarY by Yashwith L."
+
+and a link to:
+
+https://github.com/lyashwith/registrarY
+
+3. Free Redistribution
+
+The original, unmodified Software may be copied and redistributed free of charge, provided that the copyright notice and this License are retained.
+
+This includes redistribution of:
+
+- Python source files;
+- PyInstaller executables;
+- ZIP or other archives containing the Software;
+- Copies hosted on websites or code repositories.
+
+4. Commercial Use
+
+Commercial use is expressly permitted.
+
+Individuals, organizations, businesses, schools, companies, and other entities may use registrarY in connection with their commercial activities without paying the author.
+
+For example, a business may use registrarY internally to manage its records.
+
+However, permission to commercially use the Software does not grant permission to commercially sell or distribute the Software.
+
+5. No Sale
+
+The Software itself may not be sold.
+
+No person may sell, rent, lease, sublicense, or otherwise provide the Software in exchange for monetary payment.
+
+This prohibition applies to:
+
+- The original Python source code;
+- PyInstaller ".exe" files;
+- Copies of the Software;
+- Modified versions of the Software;
+- Archives containing the Software;
+- Substantially equivalent copies of the Software.
+
+A person may not charge a fee specifically for providing access to or a copy of registrarY.
+
+6. No Paid Redistribution
+
+The Software may not be distributed through:
+
+- Paid downloads;
+- Paid memberships;
+- Subscription services;
+- Paywalls;
+- Commercial software bundles where the Software itself is being sold;
+- Any other distribution method where payment is required specifically to obtain the Software.
+
+Free redistribution is permitted provided that the conditions of this License are followed.
+
+7. Modifications
+
+You may modify registrarY for private or internal use.
+
+Modified versions may be used for personal, educational, research, or commercial purposes.
+
+However, modified versions may not be publicly distributed, published, uploaded, sold, or otherwise made available to third parties without prior written permission from Yashwith L.
+
+Private modification is therefore permitted, but public redistribution of modified versions is not.
+
+8. No Removal of Attribution
+
+Copyright notices, author attribution, and this License must not be removed or deliberately obscured from copies of the Software that are redistributed under this License.
+
+9. No Relicensing
+
+The Software may not be relicensed under terms that remove or conflict with the restrictions of this License.
+
+In particular, a person may not redistribute registrarY under another license that permits the Software to be sold or permits public redistribution of modified versions.
+
+10. Third-Party Components
+
+This License applies only to code and other material owned by Yashwith L.
+
+Any third-party libraries, Python packages, dependencies, or other components used by registrarY remain subject to their respective licenses.
+
+Nothing in this License grants permission to violate the license terms of third-party components.
+
+11. Trademarks and Branding
+
+This License does not grant permission to use the name Yashwith L., the registrarY project name, logos, or other branding in a way that implies endorsement, sponsorship, or official affiliation.
+
+12. Warranty Disclaimer
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL YASHWITH L. BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+13. Termination
+
+Any permissions granted by this License automatically terminate if you violate its terms.
+
+Upon termination, you must cease the activity that violates this License.
+
+Permissions may be restored if the violation is corrected and Yashwith L. provides written permission.
+
+14. Acceptance
+
+By using, copying, modifying, or redistributing registrarY, you agree to the terms of this License.
+
+If you do not agree to these terms, you may not use, copy, modify, or redistribute the Software.
+
+---
+
+Software: registrarY
+Version: FUNSL v1.0
+Copyright © 2026 Yashwith L.
+Repository: https://github.com/lyashwith/registrarY
+
+Commercial use: Allowed
+Free redistribution: Allowed
+Selling the Software: Not allowed
+Private modification: Allowed
+Public redistribution of modified versions: Not allowed without permission
+Attribution: Required
