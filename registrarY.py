@@ -1,4 +1,4 @@
-import ast
+from ast import literal_eval
 def create_default_database():
     num_entry=int(input("Enter the number of entries you want to add: "))
         
@@ -36,7 +36,7 @@ def create_default_database():
 def load_database():
     with open("database.py", "r") as file:
         content = file.read()
-    return ast.literal_eval(content.strip())
+    return literal_eval(content.strip())
 
 def view_all():
     database = load_database()
