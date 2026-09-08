@@ -314,14 +314,6 @@ It is designed primarily as a learning and hobby project rather than a productio
 
 ---
 
-## 🤝 Contributions
-
-Contributions, suggestions, bug reports, and improvements are welcome.
-
-If you find a bug or have an idea for improving registrarY, feel free to open an issue or submit a pull request.
-
----
-
 ## 📄 License
 
 registrarY is licensed under the **Free Use, No-Sale License (FUNSL) v1.0**.
@@ -341,7 +333,7 @@ See the [`LICENSE`](LICENSE) file for the complete license terms.
 
 ## 👤 Author
 
-Developed by **lyashwith**
+Developed by **Yashwith L**
 
 [![GitHub](https://img.shields.io/badge/GitHub-lyashwith-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith)
 
