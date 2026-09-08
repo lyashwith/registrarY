@@ -1,51 +1,35 @@
 # registrarY
 
-[![Download Executable](https://img.shields.io/badge/registrarY.exe_(v1.2beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2Beta/registrarY.exe)
-[![Download Executable v1.2.0.1beta](https://img.shields.io/badge/registrarY.exe_(v1.2.0.1beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2.0.1beta/registrarY.v1.2.0.1beta.exe)
+[![Download v1.3-beta Executable](https://img.shields.io/badge/registrarY.exe_(v1.3beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
+[![Download v1.2.0.1beta Executable](https://img.shields.io/badge/registrarY.exe_(v1.2.0.1beta)-Download-0078D4?style=flat&size=large&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2.0.1beta/registrarY.v1.2.0.1beta.exe)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repository-181717?style=flat&size=large&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY)
-[![Download Source Code](https://img.shields.io/badge/Download-Source_Code_.ZIP-24292E?style=flat&size=large&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/tags/v1.2Beta.zip)
+[![Download Source Code](https://img.shields.io/badge/Download-Source_Code_.ZIP_(v1.3beta)-24292E?style=flat&size=large&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/tags/v1.3beta.zip)
 
-
-A lightweight Python command-line interface (CLI) database application designed to generate, store, search, and update student records using structured, sequential roll numbers.
+A lightweight Python command-line interface (CLI) database application designed to generate, store, search, and update student records using custom schemas or structured sequential roll numbers.
 
 ---
 
 ## 🚀 Features
 
-- **Interactive Navigation Menu:** Seamlessly switch between creating entries, viewing records, searching, updating details, help, and exiting.
-- **Automated Roll Number Generation:** Generates sequential roll numbers (e.g., `A0001`, `A0002`) based on entry index.
-- **Safe Local Data Storage:** Saves data directly as dictionary literals in `database.py` and parses them back safely using Python's `ast.literal_eval`.
-- **Record Display & Search:** Retrieve specific student details by roll number or view the complete database at once.
-- **In-Place Updates:** Update specific fields while preserving unchanged values by pressing Enter.
+- **Interactive Navigation Menu:** Seamlessly switch between creating entries, defining custom schemas, viewing records, searching, updating details, help, and exiting.
+- **Custom Schema Creation:** Define dynamic primary key names and field attributes (`str`, `int`, `float`) saved independently to custom schema files (`custom_schema<db_name>.py`).
+- **Custom Data Entry:** Add entries matching your defined custom schemas with data type handling.
+- **Automated Roll Number Generation:** Generates sequential roll numbers (e.g., `A0001`, `A0002`) for default database setups.
+- **Record Display & Search:** Retrieve specific records by primary key or view all formatted records line-by-line.
+- **In-Place Updates:** Modify specific attributes while preserving unchanged values by pressing Enter.
 
 ---
 
 ## 🗺️ Roadmap & Upcoming Features
 
-- **Custom Schemas / User-Defined Fields:** Enable users to define custom record attributes, allowing for dynamic data schemas tailored to specific storage requirements rather than relying on fixed default structures.
-- **Dynamic File Creation:** Automatically create missing database files to prevent startup errors.
-- **Input Validation:** Prevent crashes from non-numeric or malformed user inputs during database operations.
+- **Text File Data Persistence:** Transition from stringified `.py` data files to standard `.txt` text files for safer storage and separation of data from code execution.
+- **Input Validation & Exception Handling:** Prevent crashes on malformed user inputs during menu choices or numeric entries.
+- **Database Encryption:** Add encryption capabilities (such as `cryptography.fernet`) to secure local database files.
+- **Enhanced CLI Styling:** Integrate terminal formatting libraries (e.g., `rich`) for styled tables and colored output.
 
 ---
 
-## 🐛 Known Issues & Limitations (v1.2 Beta)
+## 🐛 Known Issues & Limitations (v1.3 Beta)
 
-- **Missing File Handling (`FileNotFoundError`):** Calling *View*, *Search*, or *Update* before running *Create default* crashes the program if `database.py` does not exist yet.
-- **Overwriting Data:** Option (1) *Create default* completely overwrites `database.py` instead of appending new student records to existing ones.
-- **Unvalidated Input:** Non-numeric input for the entry count will trigger a `ValueError` crash instead of prompting the user again.
-- **Redundant Loop Condition:** The check `if num_entry <= 0:` inside the `for` loop in `create_default_database()` is redundant because the outer `else` block already ensures `num_entry > 0`.
-- **Typos in CLI Messages:** Minor typos in user strings (e.g., *"not found in tha database"* instead of *"the database"*).
-
----
-
-## 🛠️ Project Structure
-
-```text
-registrarY/
-├── registrarY.py      # Main CLI application script
-├── database.py        # Local data storage file (dictionary literal)
-└── README.md          # Project documentation
-```
-<a href="https://github.com/lyashwith">
-  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
-</a>
+- **Schema File Dependency:** Creating custom entries requires a corresponding `custom_schema<db_name>.py` file to exist first.
+- **Overwriting Data File:** Creating new custom entries overwrites existing dataset files rather than appending to them.
