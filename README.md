@@ -3,7 +3,7 @@
 [![Download v1.3 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.3_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
 [![Download v1.2.0.1 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.2.0.1_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.2.0.1beta/registrarY.v1.2.0.1beta.exe)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repository-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 
 A lightweight Python command-line interface (CLI) application for creating, storing, searching, and updating records.
 
