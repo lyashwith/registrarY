@@ -336,7 +336,9 @@ See the [`LICENSE`](LICENSE) file for the complete license terms.
 
 Developed by **Yashwith L**
 
-[![GitHub](https://img.shields.io/badge/GitHub-lyashwith-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith)
+<a href="https://github.com/lyashwith">
+  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
+</a>
 
 ---
 
