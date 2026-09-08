@@ -108,6 +108,7 @@ Make sure Python is installed and available in your system PATH.
 You can download a pre-built Windows executable from the releases:
 
 * **v1.3 Beta:** Use the download button at the top of this README.
+[![Download v1.3 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.3_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
 * **v1.2.0.1 Beta:** Also available from the download button above.
 
 No Python installation is required when using the executable.
@@ -167,7 +168,7 @@ Planned improvements for future versions include:
 
 ---
 
-## 🐛 Known Issues & Limitations
+### 🐛 Known Issues & Limitations
 
 * Schema File Dependency
 
