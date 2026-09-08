@@ -29,10 +29,23 @@ A lightweight Python command-line interface (CLI) database application designed 
 
 ---
 
-## 🐛 Known Issues & Limitations (v1.3 Beta)
+## 🐛 Known Issues & Common Pitfalls (v1.3 Beta)
 
-- **Schema File Dependency:** Creating custom entries requires a corresponding `custom_schema<db_name>.py` file to exist first.
-- **Overwriting Data File:** Creating new custom entries overwrites existing dataset files rather than appending to them.
+* **Schema File Dependency:** Calling option `(3) Add data` requires running `(2) Create custom Schema` first so that `custom_schema<db_name>.py` exists.
+
+* **Data File Overwriting:** Adding new custom entries or creating default entries overwrites existing dataset files rather than appending to them.
+
+* **Unhandled Data Type Exceptions:** Inputting invalid data types (e.g., text when an integer or float is expected in a custom entry) throws an unhandled `ValueError` instead of re-prompting the user.
+
+* **File Storage Format Vulnerability:** Storing data inside `.py` scripts requires valid Python dictionary syntax. Any syntax corruption in the file prevents reading it back via `ast.literal_eval`.
+
+* **Hardcoded Prompts in Search & View:** Search (`search_database`) and view (`view_all`) prompts explicitly reference **"Roll Number"**, even when operating on a database configured with a custom primary key name.
+
+* **Duplicate Primary Keys Overwritten:** Entering a primary key that already exists in the database overwrites the previous record without displaying a confirmation warning.
+
+* **Strict Schema Input Formatting:** Defining a schema requires input formatted strictly as `field_name;type` separated by commas (for example, `name;str,age;int`). Formatting mistakes can cause parsing failures or unexpected schema dictionaries.
+
+* **Incomplete Loop Validation for Entry Count:** In `create_default_database()`, non-numeric inputs for entry counts are caught, but entering `0` or a negative number prints an error message without properly breaking or re-prompting before data collection.
 
 
 ## 🛠️ Project Structure
