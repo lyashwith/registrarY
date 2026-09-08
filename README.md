@@ -33,3 +33,17 @@ A lightweight Python command-line interface (CLI) database application designed 
 
 - **Schema File Dependency:** Creating custom entries requires a corresponding `custom_schema<db_name>.py` file to exist first.
 - **Overwriting Data File:** Creating new custom entries overwrites existing dataset files rather than appending to them.
+
+
+## 🛠️ Project Structure
+
+```text
+registrarY/
+├── registrarY.py                   # Main CLI application script
+├── <database_name>.py               # Local database storage file
+├── custom_schema<database_name>.py # Schema definition file for custom fields
+└── README.md                       # Project documentation
+```
+<a href="https://github.com/lyashwith">
+  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
+</a>
