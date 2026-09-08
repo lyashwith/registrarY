@@ -169,7 +169,7 @@ Planned improvements for future versions include:
 
 ## 🐛 Known Issues & Limitations
 
-### Schema File Dependency
+* Schema File Dependency
 
 Before adding data using a custom schema, you must first create the schema.
 
@@ -181,13 +181,13 @@ custom_schema<database_name>.py
 
 ---
 
-### Data File Overwriting
+* Data File Overwriting
 
 Adding new custom entries or creating default entries may overwrite existing dataset files instead of appending new records.
 
 ---
 
-### Invalid Data Type Input
+* Invalid Data Type Input
 
 Entering text when an `int` or `float` is expected can currently raise an unhandled:
 
@@ -199,7 +199,7 @@ Instead of automatically asking the user to enter the value again.
 
 ---
 
-### Python File Storage
+* Python File Storage
 
 Database data is currently stored using `.py` files containing Python dictionary data.
 
@@ -213,7 +213,7 @@ ast.literal_eval()
 
 ---
 
-### Hardcoded "Roll Number" Prompts
+* Hardcoded "Roll Number" Prompts
 
 Some search and viewing prompts explicitly reference:
 
@@ -225,13 +225,13 @@ even when a database uses a custom primary key name.
 
 ---
 
-### Duplicate Primary Keys
+* Duplicate Primary Keys
 
 If a primary key already exists, entering the same key may overwrite the existing record without displaying a confirmation warning.
 
 ---
 
-### Strict Schema Formatting
+* Strict Schema Formatting
 
 Schema definitions must follow the required format:
 
@@ -251,7 +251,7 @@ Incorrect formatting may cause parsing errors or unexpected schema behaviour.
 
 ---
 
-### Entry Count Validation
+* Entry Count Validation
 
 In `create_default_database()`, non-numeric entry counts are handled.
 
