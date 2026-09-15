@@ -1,5 +1,4 @@
 from ast import literal_eval
-import re
 def create_default_database():
     while True:
         try:
