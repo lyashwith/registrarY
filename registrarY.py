@@ -1,4 +1,6 @@
 from ast import literal_eval
+import pickle
+import tabulate 
 def create_default_database():
     while True:
         try:
@@ -35,18 +37,18 @@ def create_default_database():
 
     print(database)
     python_file_content =str(database)
-    with open(f"{database_name}.py", "w") as file:
-        file.write(python_file_content)
+    with open(f"{database_name}.eL", "wb") as file:
+        pickle.dump(python_file_content,file)
 
 
 def load_database():
-    with open(f"{database_name}.py", "r") as file:
-        content = file.read()
+    with open(f"{database_name}.eL", "rb") as file:
+        content = pickle.load(file)
     return literal_eval(content.strip())
 
 def load_custom_schema():
-    with open(f"custom_schema{database_name}.py", "r") as file:
-        content = file.read()
+    with open(f"custom_schema-{database_name}.eLs", "rb") as file:
+        content = pickle.load(file)
     return content
 
 def custom_schema():
@@ -58,8 +60,8 @@ def custom_schema():
         field_name, data_type = i.split(";",1)
         schema[primary_key][field_name] = data_type
     print("Custom schema created:",schema)
-    with open(f"custom_schema{database_name}.py", "w") as file:
-        file.write(str(schema))
+    with open(f"custom_schema-{database_name}.eLs", "wb") as file:
+        pickle.dump(str(schema),file)
 
 def add_custom_data():
     content=load_custom_schema()
@@ -91,8 +93,8 @@ def add_custom_data():
     print(database)       
 
     python_file_content = str(database)
-    with open(f"{database_name}.py", "w") as file:
-        file.write(python_file_content)
+    with open(f"{database_name}.eL", "wb") as file:
+        pickle.dump(python_file_content,file)
 
 def view_all():
     database = load_database()
@@ -120,7 +122,7 @@ def search_database():
 def update_database():
     database=load_database()
     
-    primary_key = input("Enter roll number to search: ")
+    primary_key = input(f"Enter primary key to search: ")
         
     if primary_key in database:
         print("=" * 100)
@@ -151,7 +153,7 @@ def update_database():
 while True:
     database_name=str(input("Enter the name of the database to do the operations:"))
     try:
-        with open(f"{database_name}.py", "r") as file:
+        with open(f"{database_name}.eL", "rb") as file:
             file.read()
         if database_name !="":
             break
