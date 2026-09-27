@@ -61,11 +61,10 @@ def custom_schema():
         schema[primary_key][field_name] = data_type
     print("Custom schema created:",schema)
     with open(f"custom_schema-{database_name}.eLs", "wb") as file:
-        pickle.dump(str(schema),file)
+        pickle.dump(schema,file)
 
 def add_custom_data():
-    content=load_custom_schema()
-    schema = literal_eval(content)
+    schema=load_custom_schema()
     for key,value in schema.items():
         primary_key_name=key
     schema_lengths =len(schema[primary_key_name])
@@ -92,7 +91,7 @@ def add_custom_data():
                 database[primary_key][field_name] = value
     print(database)       
 
-    python_file_content = str(database)
+    python_file_content = database
     with open(f"{database_name}.eL", "wb") as file:
         pickle.dump(python_file_content,file)
 
@@ -107,7 +106,6 @@ def view_all():
             print("_" * 100)
 def search_database():
     database=load_database()
-
     primary_key = input("Enter roll number to search: ")
 
     if primary_key in database:
@@ -138,9 +136,8 @@ def update_database():
             if new_value != "":
                 database[primary_key][field_name] = new_value
         
-        python_file_content =str(database)
-        with open(f"{database_name}.py", "w") as file:
-            file.write(python_file_content)
+        with open(f"{database_name}.eL", "wb") as file:
+            pickle.dump(database,file)
         print("Database Updated")
         print("=" * 100)
         print(f"      Primary key: {primary_key}")
