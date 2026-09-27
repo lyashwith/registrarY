@@ -75,7 +75,7 @@ def add_custom_data():
         num_entry=int(input("Enter the number of entries you want to add: "))
         try:
             database=load_database()
-        except:
+        except FileNotFoundError:
             database = {}
         if num_entry <= 0:
             print("Please enter a positive number of entries.")
@@ -104,7 +104,7 @@ def add_custom_data():
         python_file_content = database
         with open(f"{database_name}.eL", "wb") as file:
             pickle.dump(python_file_content,file)
-    except:
+    except :
         print("scheme not found/error ") 
 
 def view_all():
