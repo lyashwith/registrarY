@@ -1,4 +1,3 @@
-from ast import literal_eval
 import pickle
 import tabulate 
 def create_default_database():
@@ -40,7 +39,10 @@ def create_default_database():
     with open(f"{database_name}.eL", "wb") as file:
         pickle.dump(python_file_content,file)
 
-
+def dump_database(database):
+    python_file_content =database
+    with open(f"{database_name}.eL", "wb") as file:
+        pickle.dump(python_file_content,file)
 def load_database():
     with open(f"{database_name}.eL", "rb") as file:
         content = pickle.load(file)
@@ -104,9 +106,8 @@ def view_all():
             for field_name, value in details.items():
                 print(f"      {field_name}: {value}")
             print("_" * 100)
-def search_database():
+def search_database(primary_key):
     database=load_database()
-    primary_key = input("Enter roll number to search: ")
 
     if primary_key in database:
         print("=" * 100)
@@ -147,6 +148,19 @@ def update_database():
     else:
         print("roll number",primary_key,"not found in the database")
 
+def delete_data_database():
+    database=load_database()
+    primary_key=str(input("enter the primary key of the desired to delete:"))
+    if primary_key in database:
+        search_database(primary_key)
+        yn=input(f"do you want to delete {primary_key} y/n:")
+        if yn.lower()=="y" or yn.lower()=="yes":
+            del database[primary_key]
+            dump_database(database)
+        else:
+            print("deletion abandoned")
+        
+
 while True:
     database_name=str(input("Enter the name of the database to do the operations:"))
     try:
@@ -182,13 +196,16 @@ while True:
     elif option.lower()=="view all" or option=="4":
         view_all()
     elif option.lower()=="search" or option=="5":
-        search_database()
+        primary_key = input(f"Enter primary key to search: ")
+        search_database(primary_key)
     elif option.lower()=="update" or option=="6":
         update_database()
     elif option.lower()=="help" or option=="7":
         help_data=[[1,"Create Default","Initialize a standard student database with predefined fields\n(Name, DOB, Father's Name, Mother's Name) and auto-generated\nunique Roll Numbers (e.g., A0001).",],[2,"Create Custom","Define your own database schema structure by specifying custom field\nnames and data types (str, int, float) to store tailored records.",],[3,"Add Data","Insert new entries into an existing database using its established\ncustom schema definition.",],[4,"View All","Display every record stored in the current active database file\nformatted field by field.",],[5,"Search","Find and display details for a specific record by entering its\nunique primary key or Roll Number.",],[6,"Update","Modify values in an existing record field by field. Press ENTER\nwithout typing to keep existing data unchanged.",],[7,"Help","Display this detailed navigation guide and system commands overview.",],[8,"Exit","Safely save all current operations, close database files, and terminate\nthe program session.",],]                          
         headers = ["Option", "Action", "Description"]
         print(tabulate.tabulate(help_data,headers,tablefmt="fancy_grid"))
+    elif option.lower()=="del":
+        delete_data_database()
     elif option.lower()=="exit" or option=="8":
         print("""Kicking you out of the program......
 DONE.""")
