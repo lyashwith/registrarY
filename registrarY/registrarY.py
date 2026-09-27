@@ -159,6 +159,8 @@ def delete_data_database():
             dump_database(database)
         else:
             print("deletion abandoned")
+    else:
+        print("Primary key not found")
         
 
 while True:
