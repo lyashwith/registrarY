@@ -36,7 +36,7 @@ def create_default_database():
             database.update(data)
 
     print(database)
-    python_file_content =str(database)
+    python_file_content =database
     with open(f"{database_name}.eL", "wb") as file:
         pickle.dump(python_file_content,file)
 
@@ -44,7 +44,7 @@ def create_default_database():
 def load_database():
     with open(f"{database_name}.eL", "rb") as file:
         content = pickle.load(file)
-    return literal_eval(content.strip())
+    return content
 
 def load_custom_schema():
     with open(f"custom_schema-{database_name}.eLs", "rb") as file:
@@ -154,7 +154,7 @@ while True:
     database_name=str(input("Enter the name of the database to do the operations:"))
     try:
         with open(f"{database_name}.eL", "rb") as file:
-            file.read()
+            pickle.load(file)
         if database_name !="":
             break
     except Exception as e:
