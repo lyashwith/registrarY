@@ -186,17 +186,9 @@ while True:
     elif option.lower()=="update" or option=="6":
         update_database()
     elif option.lower()=="help" or option=="7":
-        print("""OPTION  | ACTION          | DESCRIPTION
-+-------+-----------------+---------------------------------------------------+
-| 1     | Create Default  | Add entries and auto-generate roll numbers.       |
-| 2     | Create Custom   | Define a custom schema for the database.          |
-| 3     | Add Data        | Insert new records into the database.             |
-| 4     | View All        | Display all records currently in the database.    |
-| 5     | Search          | Look up a record by Roll Number.                  |
-| 6     | Update          | Modify an existing record (Press ENTER to skip).  |
-| 7     | Help            | Display this menu.                                |
-| 8     | Exit            | Quit the application.                             |
-+-------+-----------------+---------------------------------------------------+""")                           
+        help_data=[[1,"Create Default","Initialize a standard student database with predefined fields\n(Name, DOB, Father's Name, Mother's Name) and auto-generated\nunique Roll Numbers (e.g., A0001).",],[2,"Create Custom","Define your own database schema structure by specifying custom field\nnames and data types (str, int, float) to store tailored records.",],[3,"Add Data","Insert new entries into an existing database using its established\ncustom schema definition.",],[4,"View All","Display every record stored in the current active database file\nformatted field by field.",],[5,"Search","Find and display details for a specific record by entering its\nunique primary key or Roll Number.",],[6,"Update","Modify values in an existing record field by field. Press ENTER\nwithout typing to keep existing data unchanged.",],[7,"Help","Display this detailed navigation guide and system commands overview.",],[8,"Exit","Safely save all current operations, close database files, and terminate\nthe program session.",],]                          
+        headers = ["Option", "Action", "Description"]
+        print(tabulate.tabulate(help_data,headers,tablefmt="fancy_grid"))
     elif option.lower()=="exit" or option=="8":
         print("""Kicking you out of the program......
 DONE.""")
