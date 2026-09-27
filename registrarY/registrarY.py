@@ -171,7 +171,7 @@ while True:
         if database_name !="":
             break
     except Exception as e:
-        question1=str(input("do you want to create new database?y/n"))
+        question1=str(input("do you want to create new database?y/n:"))
         if question1.lower()=="y" or question1.lower()=="yes":
             print(e,f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
             break
