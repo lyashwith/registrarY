@@ -1,4 +1,3 @@
-
 #  registrarY
 
 [![Download v1.35 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.35_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
