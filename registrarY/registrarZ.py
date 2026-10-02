@@ -1,7 +1,7 @@
 #AI code
 #not human
 
-import tkinter as tk
+"""import tkinter as tk
 from tkinter import ttk, messagebox, filedialog
 from ast import literal_eval
 import os
@@ -566,4 +566,4 @@ REGISTRAR DATABASE MANAGER - HELP
 if __name__ == "__main__":
     root = tk.Tk()
     app = RegistrarGUI(root)
-    root.mainloop()
+    root.mainloop()"""
