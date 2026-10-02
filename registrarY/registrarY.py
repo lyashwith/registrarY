@@ -180,19 +180,24 @@ def delete_data_database():
     else:
         print("Primary key not found")
         
-
-while True:
-    database_name=str(input("Enter the name of the database to do the operations:"))
-    try:
-        with open(f"{database_name}.eL", "r") as file:
-            load(file)
-        if database_name !="":
-            break
-    except FileNotFoundError:
-        print(f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
-        question1=str(input("do you want to create new database?y/n:"))
-        if question1.lower()=="y" or question1.lower()=="yes":
-            break
+def database_name_taker():
+    while True:
+        database_name=str(input("Enter the name of the database to do the operations:"))
+        try:
+            with open(f"{database_name}.eL", "r") as file:
+                load(file)
+            if database_name!="" or database_name!=" ":
+                return database_name
+        except FileNotFoundError:
+            print(f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
+            question1=str(input("do you want to create new database?y/n:"))
+            if question1.lower()=="y" or question1.lower()=="yes":
+                with open(f"{database_name}.eL", "w") as file:
+                    pass 
+            return database_name
+        except Exception as e:
+            print(f"Error occured\nError name:{e}")
+database_name=database_name_taker()
 while True:
     print(
         """"What do you want to do? 
