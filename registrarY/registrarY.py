@@ -1,4 +1,5 @@
 import pickle
+import json
 import tabulate 
 def create_default_database():
     while True:
@@ -36,22 +37,22 @@ def create_default_database():
 
     print(database)
     python_file_content =database
-    with open(f"{database_name}.eL", "wb") as file:
-        pickle.dump(python_file_content,file)
+    with open(f"{database_name}.eL", "w") as file:
+        json.dump(python_file_content,file)
 
 def dump_database(database):
     python_file_content =database
-    with open(f"{database_name}.eL", "wb") as file:
-        pickle.dump(python_file_content,file)
+    with open(f"{database_name}.eL", "w") as file:
+        json.dump(python_file_content,file)
 
 def load_database():
-    with open(f"{database_name}.eL", "rb") as file:
-        content = pickle.load(file)
+    with open(f"{database_name}.eL", "r") as file:
+        content = json.load(file)
     return content
 
 def load_custom_schema():
-    with open(f"custom_schema-{database_name}.eLs", "rb") as file:
-        content = pickle.load(file)
+    with open(f"custom_schema-{database_name}.eLs", "r") as file:
+        content = json.load(file)
     return content
 
 def custom_schema():
@@ -63,8 +64,8 @@ def custom_schema():
         field_name, data_type = i.split(";",1)
         schema[primary_key][field_name] = data_type
     print("Custom schema created:",schema)
-    with open(f"custom_schema-{database_name}.eLs", "wb") as file:
-        pickle.dump(schema,file)
+    with open(f"custom_schema-{database_name}.eLs", "w") as file:
+        json.dump(schema,file)
 
 def add_custom_data():
     try:
@@ -102,10 +103,14 @@ def add_custom_data():
         print(database)       
 
         python_file_content = database
-        with open(f"{database_name}.eL", "wb") as file:
-            pickle.dump(python_file_content,file)
-    except :
+        with open(f"{database_name}.eL", "w") as file:
+            json.dump(python_file_content,file)
+    except FileNotFoundError:
         print("scheme not found/error ") 
+    except ValueError:
+        print("type anly the assigned datatypes")
+    except Exception as e:
+        print(f"Error occured\nError name:{e}")
 
 def view_all():
     database = load_database()
@@ -149,8 +154,8 @@ def update_database():
             if new_value != "":
                 database[primary_key][field_name] = new_value
         
-        with open(f"{database_name}.eL", "wb") as file:
-            pickle.dump(database,file)
+        with open(f"{database_name}.eL", "w") as file:
+            json.dump(database,file)
         print("Database Updated")
         print("=" * 100)
         print(f"      Primary key: {primary_key}")
@@ -178,8 +183,8 @@ def delete_data_database():
 while True:
     database_name=str(input("Enter the name of the database to do the operations:"))
     try:
-        with open(f"{database_name}.eL", "rb") as file:
-            pickle.load(file)
+        with open(f"{database_name}.eL", "r") as file:
+            json.load(file)
         if database_name !="":
             break
     except Exception as e:
