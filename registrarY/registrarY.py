@@ -1,5 +1,4 @@
-import pickle
-import json
+from json import dump,load
 import tabulate 
 def create_default_database():
     while True:
@@ -38,21 +37,21 @@ def create_default_database():
     print(database)
     python_file_content =database
     with open(f"{database_name}.eL", "w") as file:
-        json.dump(python_file_content,file)
+        dump(python_file_content,file)
 
 def dump_database(database):
     python_file_content =database
     with open(f"{database_name}.eL", "w") as file:
-        json.dump(python_file_content,file)
+        dump(python_file_content,file)
 
 def load_database():
     with open(f"{database_name}.eL", "r") as file:
-        content = json.load(file)
+        content = load(file)
     return content
 
 def load_custom_schema():
     with open(f"custom_schema-{database_name}.eLs", "r") as file:
-        content = json.load(file)
+        content = load(file)
     return content
 
 def custom_schema():
@@ -65,7 +64,7 @@ def custom_schema():
         schema[primary_key][field_name] = data_type
     print("Custom schema created:",schema)
     with open(f"custom_schema-{database_name}.eLs", "w") as file:
-        json.dump(schema,file)
+        dump(schema,file)
 
 def add_custom_data():
     try:
@@ -104,11 +103,13 @@ def add_custom_data():
 
         python_file_content = database
         with open(f"{database_name}.eL", "w") as file:
-            json.dump(python_file_content,file)
+            dump(python_file_content,file)
     except FileNotFoundError:
         print("scheme not found/error ") 
     except ValueError:
         print("type anly the assigned datatypes")
+    except OSError as e:
+        print(f"{e} has occured\nPlease allow your antivirus to make changes to a purticuular file/folder")
     except Exception as e:
         print(f"Error occured\nError name:{e}")
 
@@ -155,7 +156,7 @@ def update_database():
                 database[primary_key][field_name] = new_value
         
         with open(f"{database_name}.eL", "w") as file:
-            json.dump(database,file)
+            dump(database,file)
         print("Database Updated")
         print("=" * 100)
         print(f"      Primary key: {primary_key}")
@@ -184,13 +185,13 @@ while True:
     database_name=str(input("Enter the name of the database to do the operations:"))
     try:
         with open(f"{database_name}.eL", "r") as file:
-            json.load(file)
+            load(file)
         if database_name !="":
             break
-    except Exception as e:
+    except FileNotFoundError:
+        print(f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
         question1=str(input("do you want to create new database?y/n:"))
         if question1.lower()=="y" or question1.lower()=="yes":
-            print(e,f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
             break
 while True:
     print(
