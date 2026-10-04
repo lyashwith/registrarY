@@ -227,6 +227,59 @@ The executable is intended for Windows systems and can be run directly after dow
 No Python installation is required when using the pre-built executable.
 
 ---
+## 🛡️ Windows Defender / Antivirus Notice
+
+Some users may receive an antivirus warning when downloading or running the pre-built Windows executable.
+
+The `registrarY` Windows executable is packaged from the Python source using **PyInstaller**. PyInstaller-packaged executables can sometimes trigger heuristic or machine-learning-based antivirus detections because the executable contains a bundled Python runtime and packaging components.
+
+For example, Windows Defender may report:
+
+```text
+Trojan:Win32/Wacatac.C!ml
+```
+
+with a message such as:
+
+```text
+This program is dangerous and executes commands from an attacker.
+```
+
+### ⚠️ Important
+
+This detection **does not by itself prove that registrarY contains malware**, but it should not be ignored.
+
+The current executable should therefore be treated with caution until the detection has been independently verified.
+
+**Do not disable Windows Defender or add an antivirus exclusion simply to run the executable.**
+
+If Windows Defender blocks the executable:
+
+1. Keep the file quarantined or removed.
+2. Do not bypass the warning just to run the program.
+3. Consider running the executable through multiple antivirus scanners.
+4. The source code is available in this repository so that users can inspect and build the application themselves.
+5. Future releases may provide updated builds after antivirus compatibility has been investigated.
+
+### 🔧 Recommended: Run From Source
+
+Users who do not want to use the pre-built executable can run registrarY directly from the Python source.
+
+Install the required dependency:
+
+```bash
+pip install tabulate
+```
+
+Then run:
+
+```bash
+python registrarY/registrarY.py
+```
+
+Running from source allows users to inspect the Python code directly instead of using the packaged executable.
+
+> **Note:** Antivirus detections can change between releases and antivirus engines. A detection such as `Wacatac.C!ml` is a heuristic/machine-learning classification and should be investigated rather than automatically assumed to be either malware or a false positive.
 
 ## 🧩 Custom Schema Format
 
