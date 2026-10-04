@@ -669,7 +669,7 @@ See [`LICENSE`](LICENSE) for the complete license terms.
 
 Developed by **Yashwith L.**
 
-[![GitHub](https://img.shields.io/badge/GitHub-lyashwith-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith)
+<a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
 
 ---
 
@@ -680,8 +680,4 @@ If you find registrarY useful or interesting, consider giving the repository a â
 **Repository:**
 
 https://github.com/lyashwith/registrarY
-
-**Main source file:**
-
-https://github.com/lyashwith/registrarY/blob/main/registrarY/registrarY.py
 **ai generated readme**
