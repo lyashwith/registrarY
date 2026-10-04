@@ -1,15 +1,15 @@
-#  registrarY
+# registrarY
 
-[![Download v1.35 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.35_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
-[![Download v1.3 Beta Executable](https://img.shields.io/badge/registrarY.exe_\(v1.3_Beta\)-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
+[![Download v1.35 Beta Executable](https://img.shields.io/badge/registrarY.exe_%28v1.35_Beta%29-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
+[![Download v1.3 Beta Executable](https://img.shields.io/badge/registrarY.exe_%28v1.3_Beta%29-Download-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repository-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY)
-[![Download Source Code](https://img.shields.io/badge/Download-Source_Code_.ZIP_\(v1.3beta\)-24292E?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/tags/v1.3beta.zip)
+[![Download Source Code](https://img.shields.io/badge/Download-Source_Code-24292E?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY/archive/refs/heads/main.zip)
 
-**registrarY** is a lightweight Python command-line interface (CLI) application for creating, storing, searching, updating, and managing structured records.
+**registrarY** is a lightweight Python command-line interface (CLI) application for creating, storing, searching, updating, and deleting structured records.
 
-It supports both **automatically generated sequential roll numbers** and **fully custom schemas**, making it suitable for managing student records and other structured collections of data.
+It supports both **automatically generated student records** and **custom database schemas**, making it useful for learning about Python, file handling, JSON, CRUD operations, and basic database concepts.
 
-> ⚠️ **Current Status:** registrarY is a beginner-friendly project currently in beta development. Features, storage methods, and internal behaviour may change in future releases.
+> ⚠️ **Current Status:** registrarY is a beginner-friendly project currently under development. Features, storage methods, and internal behaviour may change in future versions.
 
 ---
 
@@ -21,21 +21,44 @@ registrarY provides an interactive command-line interface for performing databas
 
 Current operations include:
 
-* Creating databases
-* Creating custom schemas
+* Creating a default database
+* Creating a custom schema
 * Adding records
 * Viewing records
 * Searching records
 * Updating records
-* Deleting records using a primary key
+* Deleting individual records
 * Viewing help information
 * Exiting the application
 
-### 📝 Custom Schema Creation
+The main menu currently contains:
 
-Create databases with your own:
+```text
+(1) Create default
+(2) Create custom Schema
+(3) Add data
+(4) View all
+(5) Search
+(6) Update
+(7) Help
+(8) Exit
+```
 
-* Primary key
+The delete operation can currently be accessed using:
+
+```text
+del
+```
+
+---
+
+## 📝 Custom Schema Creation
+
+registrarY allows users to define their own database structure.
+
+A custom schema consists of:
+
+* A primary key
 * Field names
 * Data types
 
@@ -47,21 +70,19 @@ int
 float
 ```
 
-Example schema:
+Example:
 
 ```text
 name;str,age;int,percentage;float
 ```
 
-Custom schema definitions are stored separately using files such as:
+Custom schemas are stored separately from the database.
 
-```text
-custom_schema<database_name>.py
-```
+---
 
-### 🔢 Automatic Roll Number Generation
+## 🔢 Automatic Roll Number Generation
 
-Default databases can automatically generate sequential roll numbers.
+The default database mode automatically generates sequential roll numbers.
 
 Example:
 
@@ -72,53 +93,108 @@ A0003
 A0004
 ```
 
-### 🔍 Record Search
+The default student record contains fields such as:
 
-Search for individual records using their primary key.
-
-### 📋 View Records
-
-Display records stored in a database.
-
-### ✏️ Update Records
-
-Update individual fields while preserving existing values.
-
-Pressing **Enter** without entering a new value keeps the existing value.
-
-### 🗑️ Delete Records
-
-Delete an individual record using its primary key.
-
-The delete operation works on a specific record rather than deleting the entire database.
+```text
+Name
+Date of Birth
+Father's Name
+Mother's Name
+```
 
 ---
 
-## 💻 Installation & Usage
+## 💾 JSON-Based Storage
 
-### Option 1 — Run from Source
+The current version uses JSON for database storage.
 
-#### 1. Clone the repository
+Database files use the custom:
+
+```text
+.eL
+```
+
+extension.
+
+For example:
+
+```text
+students.eL
+```
+
+The database is loaded and saved using Python's built-in `json` module.
+
+Custom schemas are also stored separately using `.eLs` files.
+
+Example:
+
+```text
+custom_schema-students.eLs
+```
+
+---
+
+## 🔍 Search
+
+Records can be searched using their primary key.
+
+If the requested key exists, the corresponding record is displayed.
+
+If it does not exist, registrarY reports that the record could not be found.
+
+---
+
+## 📋 View Records
+
+The **View All** operation displays the records currently stored in the selected database.
+
+---
+
+## ✏️ Update Records
+
+Existing records can be updated using their primary key.
+
+When updating a record, pressing **Enter** without entering a new value keeps the existing value.
+
+---
+
+## 🗑️ Delete Records
+
+Individual records can be deleted using their primary key.
+
+The program asks for confirmation before deleting the selected record.
+
+The delete operation is currently accessed using:
+
+```text
+del
+```
+
+---
+
+# 💻 Installation & Usage
+
+## Option 1 — Run from Source
+
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/lyashwith/registrarY.git
 ```
 
-#### 2. Navigate to the project directory
+### 2. Navigate to the project
 
 ```bash
 cd registrarY
 ```
 
-#### 3. Run registrarY
-
-If `registrarY.py` is located in the current directory:
+### 3. Install the dependency
 
 ```bash
-python registrarY.py
+pip install tabulate
 ```
 
-If it is inside the `registrarY` directory:
+### 4. Run registrarY
 
 ```bash
 python registrarY/registrarY.py
@@ -128,17 +204,25 @@ Make sure Python 3 is installed and available in your system PATH.
 
 ---
 
-### Option 2 — Windows Executable
+## Option 2 — Windows Executable
 
-Pre-built Windows executables are available from the GitHub releases.
+If you do not want to install Python or the required Python packages, you can use the **pre-built Windows executable**.
 
-#### v1.35 Beta
+The executable is intended for Windows systems and can be run directly after downloading.
+
+### v1.35 Beta — Recommended
 
 [![Download v1.35 Beta](https://img.shields.io/badge/Download-v1.35_Beta-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
 
-#### v1.3 Beta
+**Download:** [registrarY v1.35 Beta](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
+
+### v1.3 Beta — Older Version
 
 [![Download v1.3 Beta](https://img.shields.io/badge/Download-v1.3_Beta-0078D4?style=flat\&logo=windows11\&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
+
+**Download:** [registrarY v1.3 Beta](https://github.com/lyashwith/registrarY/releases/download/v1.3beta/registrarY-1.3-beta.exe)
+
+> **Note:** v1.35 Beta is the newer executable. v1.3 Beta is provided as an older release.
 
 No Python installation is required when using the pre-built executable.
 
@@ -146,156 +230,170 @@ No Python installation is required when using the pre-built executable.
 
 ## 🧩 Custom Schema Format
 
-Custom schemas use the following format:
+Custom schemas use:
 
 ```text
 field_name;type
 ```
 
-Multiple fields are separated using commas.
+Multiple fields are separated by commas.
 
-### Example
+Example:
 
 ```text
 name;str,age;int,percentage;float
 ```
 
-This produces fields equivalent to:
+The first input when creating a custom database is used to define the primary key.
+
+A schema can therefore be structured like:
 
 ```text
-Name        → String
-Age         → Integer
-Percentage  → Float
+{
+    "id": {
+        "name": "str",
+        "age": "int"
+    }
+}
 ```
-
-The first field can also be used as the primary key depending on the database configuration.
 
 ---
 
 ## 🔄 Database Operations
 
-registrarY follows a simple CRUD-style approach:
+registrarY follows a basic CRUD-style approach:
 
 | Operation  | Description                                |
 | ---------- | ------------------------------------------ |
 | **Create** | Create a default database or custom schema |
 | **Read**   | View and search records                    |
-| **Update** | Modify existing record fields              |
-| **Delete** | Remove a record using its primary key      |
-
-This makes the project useful for learning the basic concepts behind database management systems.
+| **Update** | Modify existing records                    |
+| **Delete** | Remove individual records                  |
 
 ---
 
-## 🗺️ Roadmap
+# 🐛 Known Issues & Limitations
 
-Planned improvements for future versions include:
+### 1. Entire JSON Database Is Loaded Into Memory
 
-* [ ] **Improved Data Persistence**
-  Move away from storing data in Python scripts and use dedicated data files.
+The current implementation loads the database into a Python dictionary before performing operations.
 
-* [ ] **Better Input Validation**
-  Re-prompt users when invalid values are entered.
+For example, searching does not currently work by reading only a small portion of the database.
 
-* [ ] **Improved Exception Handling**
-  Prevent crashes caused by malformed menu choices or incorrect numeric input.
-
-* [ ] **Database Encryption**
-  Explore optional encryption for locally stored database files.
-
-* [ ] **Improved CLI Interface**
-  Add improved formatting, tables, and coloured terminal output.
-
-* [ ] **Duplicate Key Protection**
-  Warn users before overwriting an existing record.
-
-* [ ] **Custom Primary Key Prompts**
-  Replace hardcoded references to `"Roll Number"` with the configured primary key name.
-
-* [ ] **Improved Database Management**
-  Add additional operations for managing database files and records.
+Therefore, very large databases may require significant memory.
 
 ---
 
-## 🐛 Known Issues & Limitations
+### 2. No Chunk-Based Searching
 
-### Schema File Dependency
+registrarY does not currently support loading a fixed number of records at a time.
 
-Before adding data using a custom schema, the corresponding schema must first be created.
-
-Option `(3) Add data` depends on the corresponding schema file existing:
+For example, it does not currently perform:
 
 ```text
-custom_schema<database_name>.py
+Load first 100 records
+        ↓
+Search
+        ↓
+Not found
+        ↓
+Load next 100 records
 ```
 
----
-
-### Data File Overwriting
-
-Some operations involving default or custom entries may overwrite existing dataset files instead of appending records.
-
-This behaviour may change in future versions.
+The complete JSON database is currently loaded instead.
 
 ---
 
-### Invalid Data Type Input
+### 3. Update May Change the Data Type
 
-Entering text when an `int` or `float` value is expected can currently raise an unhandled:
+During record creation, custom values are converted according to their schema.
+
+For example:
 
 ```text
-ValueError
+age;int
 ```
 
-The application may not automatically re-prompt for valid input.
-
----
-
-### Python File Storage
-
-Database data is currently stored using `.py` files containing Python dictionary data.
-
-The files must maintain valid Python dictionary syntax.
-
-If a database file becomes corrupted or contains invalid syntax, the program may fail while reading it with:
-
-```python
-ast.literal_eval()
-```
-
----
-
-### Hardcoded `"Roll Number"` Prompts
-
-Some search and viewing prompts explicitly reference:
+can store:
 
 ```text
-Roll Number
+18
 ```
 
-even when a database uses a custom primary key.
+However, during an update, the new value is currently received as normal text input.
 
-This is planned for improvement.
-
----
-
-### Duplicate Primary Keys
-
-If a primary key already exists, entering the same key may overwrite the existing record without displaying a confirmation warning.
+Therefore, a value that was originally an integer may become a string after being updated.
 
 ---
 
-### Strict Schema Formatting
+### 4. Limited Input Validation
 
-Schema definitions must follow the required format:
+Some invalid inputs are handled, but input validation is not yet comprehensive.
+
+Incorrect values can still result in errors or unexpected behaviour in some situations.
+
+---
+
+### 5. `int` and `float` Conversion Errors
+
+When a custom field is defined as:
+
+```text
+age;int
+```
+
+entering:
+
+```text
+abc
+```
+
+cannot be converted into an integer.
+
+Similarly:
+
+```text
+percentage;float
+```
+
+cannot accept arbitrary non-numeric text.
+
+These situations can produce a Python `ValueError`.
+
+---
+
+### 6. Limited Data Types
+
+Only three data types are currently supported:
+
+```text
+str
+int
+float
+```
+
+Types such as:
+
+```text
+bool
+date
+list
+dict
+```
+
+are not currently supported by the custom schema system.
+
+---
+
+### 7. Strict Schema Format
+
+Custom schemas must follow the required format:
 
 ```text
 field_name;type
 ```
 
-Multiple fields must be separated using commas.
-
-Example:
+For example:
 
 ```text
 name;str,age;int,percentage;float
@@ -305,80 +403,193 @@ Incorrect formatting may result in parsing errors or unexpected behaviour.
 
 ---
 
-### Entry Count Validation
+### 8. Custom Schema Must Exist Before Adding Data
 
-In `create_default_database()`, non-numeric entry counts are handled.
+The **Add Data** operation depends on the corresponding custom schema file.
 
-However, entering:
-
-```text
-0
-```
-
-or a negative number may not currently re-prompt the user correctly before data collection.
+A custom schema must therefore be created before adding records using that schema.
 
 ---
 
-## 🛠️ Project Structure
+### 9. Database and Schema Files Are Local Files
+
+registrarY currently stores its database and schema files locally.
+
+There is no built-in:
+
+* Cloud synchronization
+* Remote database
+* Multi-user database access
+* Network database support
+
+---
+
+### 10. No Authentication
+
+registrarY does not currently provide:
+
+* User accounts
+* Passwords
+* Authentication
+* User permissions
+* Role-based access control
+
+Anyone who can access the database files can potentially modify them.
+
+---
+
+### 11. No Encryption
+
+The `.eL` files are not encrypted.
+
+The database contents can be read or modified by someone who has access to the files.
+
+Therefore, registrarY should not currently be used for sensitive or confidential information.
+
+---
+
+### 12. `.eL` Is a Custom File Extension
+
+`.eL` is a custom extension created for registrarY.
+
+It is not a standard database format.
+
+The contents are JSON data, so manually modifying the file incorrectly can make it unreadable by the program.
+
+---
+
+### 13. Delete Is Not a Numbered Menu Option
+
+Although deleting records is supported, it is currently accessed using:
+
+```text
+del
+```
+
+rather than a numbered option in the main menu.
+
+---
+
+### 14. Fixed Default Database Fields
+
+The default database is designed around student records.
+
+Its fields are predefined and cannot be customized through the default database creation option.
+
+Custom fields should be created using the custom schema feature.
+
+---
+
+### 15. No Transaction or Recovery System
+
+registrarY does not currently provide:
+
+* Transactions
+* Automatic backups
+* Rollback
+* Crash recovery
+* Version history
+
+A damaged or accidentally modified database file may therefore require manual recovery.
+
+---
+
+### 16. Not Designed for Large Production Databases
+
+registrarY is primarily a learning and hobby project.
+
+It is not intended to replace established database systems such as:
+
+* SQLite
+* MySQL
+* PostgreSQL
+* MongoDB
+
+Large-scale applications may experience performance and reliability limitations.
+
+---
+
+# 🛠️ Project Structure
 
 ```text
 registrarY/
 │
-├── registrarY.py
-│   └── Main CLI application
+├── registrarY/
+│   └── registrarY.py
+│       └── Main CLI application
 │
-├── database.py
-│   └── Database-related functionality
+├── <database_name>.eL
+│   └── JSON database file
 │
-├── registrarZ.py
-│   └── Additional project script
-│
-├── <database_name>.py
-│   └── Generated database storage file
-│
-├── custom_schema<database_name>.py
-│   └── Generated custom schema file
+├── custom_schema-<database_name>.eLs
+│   └── JSON custom schema
 │
 ├── LICENSE
-│   └── Project license
 │
 └── README.md
-    └── Project documentation
 ```
 
-> Database and schema files may be generated dynamically when registrarY is used.
+Database and schema files may be generated dynamically while using registrarY.
 
 ---
 
-## 🎯 Project Goals
+# 🎯 Project Goals
 
-registrarY was created as a learning and hobby project for exploring concepts such as:
+registrarY was created as a learning and hobby project for exploring:
 
 * Python programming
-* Dictionaries and nested data structures
+* Dictionaries
+* JSON
 * File handling
 * Dynamic schemas
-* Data validation
+* Data type conversion
 * CRUD operations
 * Command-line interfaces
 * Local data persistence
-* Basic database-management concepts
+* Error handling
+* Basic database concepts
 
-The project is intended primarily for learning and experimentation rather than use as a production database system.
-
----
-
-## 🔐 Data & Security
-
-registrarY currently uses local files for storing database information.
-
-Because the current storage system is based on Python-readable files, these files should be treated as application data rather than a secure database format.
-
-Future versions may introduce optional encryption and a more dedicated storage format.
+The project is intended primarily for learning and experimentation rather than production use.
 
 ---
 
-## 📄 License
+# 🔐 Data & Security
+
+registrarY stores database information locally using JSON-based `.eL` files.
+
+The current storage system does not provide:
+
+* Encryption
+* Authentication
+* Access control
+* Automatic backups
+* Database recovery
+
+Do not use registrarY for storing sensitive personal, financial, medical, password, or other confidential information.
+
+---
+
+# 📈 Future Improvements
+
+Possible future improvements include:
+
+* Better input validation
+* Type-aware updates
+* Improved error handling
+* Chunk-based database searching
+* More efficient handling of large databases
+* Additional data types
+* Better schema validation
+* Adding Delete to the main numbered menu
+* Database backup and recovery
+* Export/import functionality
+* Improved CLI formatting
+* Optional encryption
+* Improved database management
+
+---
+
+# 📄 License
 
 registrarY is licensed under the **Free Use, No-Sale License (FUNSL) v1.0**.
 
@@ -401,19 +612,23 @@ See [`LICENSE`](LICENSE) for the complete license terms.
 
 ---
 
-## 👤 Author
+# 👤 Author
 
 Developed by **Yashwith L.**
 
-<a href="https://github.com/lyashwith">
-  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
-</a>
+[![GitHub](https://img.shields.io/badge/GitHub-lyashwith-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith)
 
 ---
 
-## ⭐ Support
+# ⭐ Support
 
 If you find registrarY useful or interesting, consider giving the repository a ⭐ on GitHub.
 
 **Repository:**
+
 https://github.com/lyashwith/registrarY
+
+**Main source file:**
+
+https://github.com/lyashwith/registrarY/blob/main/registrarY/registrarY.py
+**ai generated readme**
