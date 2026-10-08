@@ -1,5 +1,8 @@
 from json import dump,load
 import tabulate 
+__lazy_modules__ = ["pandas"]
+def export_file_as_excel(database):
+    import pandas as pd       #lazy
 def create_default_database():
     while True:
         try:
