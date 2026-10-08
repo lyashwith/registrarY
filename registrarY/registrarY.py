@@ -1,8 +1,6 @@
 from json import dump,load
 import tabulate 
-__lazy_modules__ = ["pandas"]
-def export_file_as_excel(database):
-    import pandas as pd       #lazy
+__lazy_modules__ = ["openpyxl"]
 def create_default_database():
     while True:
         try:
@@ -182,7 +180,28 @@ def delete_data_database():
             print("deletion abandoned")
     else:
         print("Primary key not found")
-        
+def export_file_as_excel(database):
+    from openpyxl import Workbook as workbook       #lazy
+    wbk=workbook()
+    wak=wbk.active
+    wak.title=f"{database_name}"
+    schema=load_custom_schema()
+    headers=[]
+    for i,j in schema.items():
+        headers.append(i)
+        headers.extend(j.keys())
+    wak.append(headers)
+    for a,b in database.items():
+        row=[a]
+        for ac,ca in schema.items():
+            for fe in ca:
+                row.append(b[fe])
+        wak.append(row)
+    from openpyxl.styles import Font
+
+    for cell in wak[1]:
+        cell.font = Font(bold=True)
+    wbk.save(f"{database_name}.xlsx") 
 def database_name_taker():
     while True:
         database_name=str(input("Enter the name of the database to do the operations:"))
@@ -234,6 +253,9 @@ while True:
         print(tabulate.tabulate(help_data,headers,tablefmt="fancy_grid"))
     elif option.lower()=="del":
         delete_data_database()
+    elif option.lower()=="export":
+        database=load_database()
+        export_file_as_excel(database)
     elif option.lower()=="exit" or option=="8":
         print("""Kicking you out of the program......
 DONE.""")
