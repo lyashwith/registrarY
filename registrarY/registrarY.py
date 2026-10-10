@@ -1,5 +1,5 @@
 from json import dump,load
-from os import name,makedirs,path as os_name,path_add,path
+from os import name as os_name
 from subprocess import run as sub_run
 from tabulate import tabulate
 __lazy_modules__ = ["openpyxl","subprocess","os"]
@@ -133,12 +133,8 @@ def add_custom_data():
                         else:
                             print(f"Unsupported data type: {data_type}")
                             continue
-                        database[primary_key][field_name] = value
-        print(database)       
-
-        python_file_content = database
-        with open(f"{database_name}.eL", "w") as file:
-            dump(python_file_content,file)
+                        database[primary_key][field_name] = value      
+        dump_database(database)
     except FileNotFoundError:
         print("scheme not found/error ") 
     except ValueError:
@@ -156,12 +152,10 @@ def search_database(primary_key):
     database=load_database()
 
     if primary_key in database:
-        print("=" * 100)
-        print(f"      Primary key: {primary_key}")
-        print("-" * 100)
-        for field_name, value in database[primary_key].items():
-            print(f"      {field_name}: {value}")
-        print("_" * 100)
+        headers,table_list=table_loader(database)
+        for i,j in enumerate(table_list):
+            if primary_key in j:
+                print(tabulate([table_list[i]],headers,tablefmt="rounded_grid"))
     else:
         print("roll number",primary_key,"not found in the database")
 def update_database():
@@ -203,6 +197,7 @@ def delete_data_database():
         if yn.lower()=="y" or yn.lower()=="yes":
             del database[primary_key]
             dump_database(database)
+            print("Deletion done")
         else:
             print("deletion abandoned")
     else:
@@ -239,18 +234,9 @@ def database_name_taker():
             print(f"Error occured\nError name:{e}")
 database_name=database_name_taker()
 while True:
-    print(
-        """"What do you want to do? 
-    (1) Create default
-    (2) Create custom Schema
-    (3) Add data 
-    (4) View all 
-    (5) Search 
-    (6) Update 
-    (7) Help
-    (8) Exit
-"""
-    )
+    menu = [["(1)", "Create default"],["(2)", "Create custom Schema"],["(3)", "Add data"],["(4)", "View all"],["(5)", "Search"],["(6)", "Update"],["(7)", "Delete"],["(8)", "Export"],["(9)", "Help"],["(10)", "Exit"]]
+    print("What do you want to do? ")
+    print(tabulate(menu,tablefmt="rounded_grid"))
     option=str(input("Enter your option >>>"))
     if option.lower()=="create default" or option=="1":
         clear_screen()
@@ -270,18 +256,68 @@ while True:
         search_database(primary_key)
     elif option.lower()=="update" or option=="6":
         update_database()
-    elif option.lower()=="help" or option=="7":
-        clear_screen()
-        help_data=[[1,"Create Default","Initialize a standard student database with predefined fields\n(Name, DOB, Father's Name, Mother's Name) and auto-generated\nunique Roll Numbers (e.g., A0001).",],[2,"Create Custom","Define your own database schema structure by specifying custom field\nnames and data types (str, int, float) to store tailored records.",],[3,"Add Data","Insert new entries into an existing database using its established\ncustom schema definition.",],[4,"View All","Display every record stored in the current active database file\nformatted field by field.",],[5,"Search","Find and display details for a specific record by entering its\nunique primary key or Roll Number.",],[6,"Update","Modify values in an existing record field by field. Press ENTER\nwithout typing to keep existing data unchanged.",],[7,"Help","Display this detailed navigation guide and system commands overview.",],[8,"Exit","Safely save all current operations, close database files, and terminate\nthe program session.",],]                          
-        headers = ["Option", "Action", "Description"]
-        print(tabulate(help_data,headers,tablefmt="rounded_grid"))
-    elif option.lower()=="del":
+    elif option.lower()=="del" or option.lower()=="delete" or option.lower()=="7":
         delete_data_database()
-    elif option.lower()=="export":
+    elif option.lower()=="export" or option.lower()=="8":
         clear_screen()
         database=load_database()
+        print("File save successfully")
         export_file_as_excel(database)
-    elif option.lower()=="exit" or option=="8":
+    elif option.lower()=="help" or option=="9":
+        clear_screen()
+        help_data = [
+    [1, "Create Default\n",
+     "Create a standard student database with predefined fields\n"
+     "Name, Date of Birth, Father's Name, and Mother's Name. \n"
+     "Automatically generate unique Roll Numbers (e.g., A0001) \n"
+     "for each student record.\n"],
+
+    [2, "Create Custom Schema\n",
+     "Design a database structure by specifying a unique primary key \n"
+     "and custom field names with their data types (str, int, float). \n"
+     "The schema defines the fields available when adding and managing records.\n"],
+
+    [3, "Add Data\n",
+     "Insert new records into the active database using its defined schema. \n"
+     "Enter a unique primary key and provide values matching the assigned \n"
+     "data types. Existing primary keys cannot be reused.\n"],
+
+    [4, "View All\n",
+     "Display all records in the active database in a structured table. \n"
+     "Column headers are generated from the schema, making records easier \n"
+     "to read and compare.\n"],
+
+    [5, "Search\n",
+     "Retrieve a specific record by entering its unique primary key \n"
+     "or Roll Number. Displays the matching record's primary key, \n"
+     "field names, and stored values.\n"],
+
+    [6, "Update\n",
+     "Modify the field values of an existing record by entering its \n"
+     "primary key. Press ENTER without typing a new value to retain \n"
+     "the existing value. Changes are saved to the database file.\n"],
+
+    [7, "Delete\n",
+     "Remove a record from the active database using its primary key. \n"
+     "The record is displayed before deletion, and confirmation is \n"
+     "requested to help prevent accidental data loss.\n"],
+
+    [8, "Export\n",
+     "Export the active database records to an Excel (.xlsx) file. \n"
+     "The first row contains column headers formatted in bold, followed \n"
+     "by the database records. Requires the openpyxl package.\n"],
+
+    [9, "Help\n",
+     "Display this navigation guide, including menu options, feature \n"
+     "descriptions, and supported commands for managing the database.\n"],
+
+    [10, "Exit\n",
+     "Terminate the registrarY session. Database modifications are \n"
+     "saved by their respective operations before exiting.\n"]
+]
+        headers = ["Option", "Action", "Description"]
+        print(tabulate(help_data,headers,tablefmt="rounded_grid"))
+    elif option.lower()=="exit" or option=="10":
         clear_screen()
         print("""Kicking you out of the program......
 DONE.""")
