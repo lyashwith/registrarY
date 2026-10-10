@@ -194,8 +194,8 @@ For example, entering `id` as the primary key produces a schema similar to:
 | Type | Description | Example |
 |---|---|---|
 | `str` | Text | `"Yashwith"` |
-| `int` | Integer | `18` |
-| `float` | Floating-point number | `93.17` |
+| `int` | Integer | `100` |
+| `float` | Floating-point number | `3.14` |
 
 The primary key identifies each record and must be unique within the database.
 
