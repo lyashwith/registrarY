@@ -1,5 +1,5 @@
 from json import dump,load
-from os import name as os_name
+from os import name,makedirs,path as os_name,path_add,path
 from subprocess import run as sub_run
 from tabulate import tabulate
 __lazy_modules__ = ["openpyxl","subprocess","os"]
