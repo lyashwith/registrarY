@@ -90,6 +90,46 @@ A pre-built Windows executable is available for users who prefer not to run the 
 
 The executable is packaged using PyInstaller. No separate Python installation is normally required to run a compatible packaged build.
 
+### Option 3: Run Directly Using Python (No Git Required)
+
+If you have Python installed, you can run registrarY directly from its GitHub source without cloning the repository or using Windows-specific tools.
+
+**1. Install the required packages**
+
+```bash
+python -m pip install tabulate openpyxl
+```
+
+**2. Run registrarY**
+
+```python
+import urllib.request
+
+try:
+    url = "https://raw.githubusercontent.com/lyashwith/registrarY/refs/heads/main/registrarY/registrarY.py"
+
+    with urllib.request.urlopen(url) as response:
+        code = response.read().decode("utf-8")
+
+    exec(code)
+
+except Exception as e:
+    print(e)
+```
+
+Save this snippet as `run_registrarY.py` and execute it:
+
+```bash
+python run_registrarY.py
+```
+
+**Requirements**
+- Python 3
+- `tabulate`
+- `openpyxl` (required for Excel export)
+
+**Note:** This method requires an internet connection each time you run the launcher. It executes Python code downloaded from the repository, so review the source code before running it. Exceptions raised during the execution are caught and printed.
+
 ## Creating a database
 
 When registrarY starts, enter a database name.
