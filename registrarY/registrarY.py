@@ -2,7 +2,7 @@ from json import dump,load
 from os import name as os_name
 from subprocess import run as sub_run
 from tabulate import tabulate
-__lazy_modules__ = ["openpyxl"]
+__lazy_modules__ = ["openpyxl","subprocess","os"]
 def create_default_database():
     while True:
         try:
