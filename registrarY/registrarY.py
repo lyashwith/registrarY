@@ -55,6 +55,21 @@ def load_custom_schema():
         content = load(file)
     return content
 
+def table_loader(database):
+    headers=[]
+    schema=load_custom_schema()
+    for i,j in schema.items():
+        headers.append(i)
+        headers.extend(j.keys())
+    rows=[]
+    for a,b in database.items():
+        rown=[a]
+        for k,v in b.items():
+            rown.append(v)
+        rows.append(rown)
+    return headers,rows
+
+
 def custom_schema():
     primary_key=input("Enter unique primary key field:")
     fields=input("enter fields with data type(example name;str,age;int,gender;str):")
@@ -116,15 +131,8 @@ def add_custom_data():
 
 def view_all():
     database = load_database()
-    schema=load_custom_schema()
-    print(schema)
-    print("=" * 100)
-    for primary_key, details in database.items():
-            print(f"      {list(schema.keys())[0]}: {primary_key}")
-            print("-" * 100)
-            for field_name, value in details.items():
-                print(f"      {field_name}: {value}")
-            print("_" * 100)
+    headers,rows=table_loader(database)
+    print(tabulate.tabulate(rows,headers,tablefmt="rounded_grid"))
 def search_database(primary_key):
     database=load_database()
 
@@ -185,20 +193,11 @@ def export_file_as_excel(database):
     wbk=workbook()
     wak=wbk.active
     wak.title=f"{database_name}"
-    schema=load_custom_schema()
-    headers=[]
-    for i,j in schema.items():
-        headers.append(i)
-        headers.extend(j.keys())
+    headers,rows=table_loader(database)
     wak.append(headers)
-    for a,b in database.items():
-        row=[a]
-        for ac,ca in schema.items():
-            for fe in ca:
-                row.append(b[fe])
-        wak.append(row)
+    for i in rows:
+        wak.append(i)
     from openpyxl.styles import Font
-
     for cell in wak[1]:
         cell.font = Font(bold=True)
     wbk.save(f"{database_name}.xlsx") 
