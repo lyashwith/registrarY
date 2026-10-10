@@ -164,13 +164,7 @@ def update_database():
     primary_key = input(f"Enter primary key to search: ")
         
     if primary_key in database:
-        print("=" * 100)
-        print(f"      Primary key: {primary_key}")
-        print("-" * 100)
-        for field_name, value in database[primary_key].items():
-            print(f"      {field_name}: {value}")
-        print("_" * 100)
-        print("-" * 40)
+        search_database(primary_key)
         print("Enter the new details to update the database or press ENTER KEY to keep the original values")
         for field_name, value in database[primary_key].items():
             new_value = input(f"      {field_name} (current value: {value}): ")
