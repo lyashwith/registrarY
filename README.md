@@ -341,9 +341,9 @@ The license permits specified uses while restricting the sale of the software an
 
 **Yashwith L.**
 <a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
-- Repository: [lyashwith/registrarY](https://github.com/lyashwith/registrarY)
+
 ## Repository
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repositor-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-registrarY_Repository-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/registrarY)
 
 If you find the project interesting, consider giving it a ⭐.
