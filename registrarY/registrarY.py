@@ -43,19 +43,31 @@ def create_default_database():
         dump(python_file_content,file)
 
 def dump_database(database):
-    python_file_content =database
     with open(f"{database_name}.eL", "w") as file:
-        dump(python_file_content,file)
+        dump(database,file)
 
 def load_database():
-    with open(f"{database_name}.eL", "r") as file:
-        content = load(file)
-    return content
+    try:
+        with open(f"{database_name}.eL", "r") as file:
+            k=load(file)
+            if k==None:
+                return {}
+            else:
+                return k
+    except FileNotFoundError as e:
+        print(f"Database file not found: {e}")
 
 def load_custom_schema():
-    with open(f"custom_schema-{database_name}.eLs", "r") as file:
-        content = load(file)
-    return content
+    try:
+        with open(f"custom_schema-{database_name}.eLs", "r") as file:
+            content = load(file)
+            if content==None:
+                return {}
+            else:
+                return content
+    except FileNotFoundError as e:
+        print(f"Database file not found: {e}")
+
 
 def table_loader(database):
     headers=[]
@@ -214,14 +226,14 @@ def database_name_taker():
         try:
             with open(f"{database_name}.eL", "r") as file:
                 load(file)
-            if database_name!="" or database_name!=" ":
+            if database_name!="" and database_name!=" ":
                 return database_name
         except FileNotFoundError:
             print(f"You will have create a new database {database_name} as the file doesnt exist \nand later continue to do operations on it") 
             question1=str(input("do you want to create new database?y/n:"))
             if question1.lower()=="y" or question1.lower()=="yes":
                 with open(f"{database_name}.eL", "w") as file:
-                    pass 
+                    dump({},file)
             return database_name
         except Exception as e:
             print(f"Error occured\nError name:{e}")
