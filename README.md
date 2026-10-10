@@ -339,7 +339,7 @@ The license permits specified uses while restricting the sale of the software an
 
 ## Author
 
-**Yashwith L.\n**
+**Yashwith L**
 
 <a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
 
