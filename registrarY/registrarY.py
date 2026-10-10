@@ -1,5 +1,7 @@
 from json import dump,load
-import tabulate 
+from os import name as os_name
+from subprocess import run as sub_run
+from tabulate import tabulate
 __lazy_modules__ = ["openpyxl"]
 def create_default_database():
     while True:
@@ -69,6 +71,11 @@ def table_loader(database):
         rows.append(rown)
     return headers,rows
 
+def clear_screen():
+    if os_name=="nt":
+        sub_run(['cls'],shell=True)
+    else:
+        sub_run(['clear'])
 
 def custom_schema():
     primary_key=input("Enter unique primary key field:")
@@ -132,7 +139,7 @@ def add_custom_data():
 def view_all():
     database = load_database()
     headers,rows=table_loader(database)
-    print(tabulate.tabulate(rows,headers,tablefmt="rounded_grid"))
+    print(tabulate(rows,headers,tablefmt="rounded_grid"))
 def search_database(primary_key):
     database=load_database()
 
@@ -234,31 +241,40 @@ while True:
     )
     option=str(input("Enter your option >>>"))
     if option.lower()=="create default" or option=="1":
+        clear_screen()
         create_default_database()
     elif option.lower()=="create custom schema" or option=="2":
+        clear_screen()
         custom_schema()
     elif option.lower()=="add data" or option=="3":
+        clear_screen()
         add_custom_data()
     elif option.lower()=="view all" or option=="4":
+        clear_screen()
         view_all()
     elif option.lower()=="search" or option=="5":
+        clear_screen()
         primary_key = input(f"Enter primary key to search: ")
         search_database(primary_key)
     elif option.lower()=="update" or option=="6":
         update_database()
     elif option.lower()=="help" or option=="7":
+        clear_screen()
         help_data=[[1,"Create Default","Initialize a standard student database with predefined fields\n(Name, DOB, Father's Name, Mother's Name) and auto-generated\nunique Roll Numbers (e.g., A0001).",],[2,"Create Custom","Define your own database schema structure by specifying custom field\nnames and data types (str, int, float) to store tailored records.",],[3,"Add Data","Insert new entries into an existing database using its established\ncustom schema definition.",],[4,"View All","Display every record stored in the current active database file\nformatted field by field.",],[5,"Search","Find and display details for a specific record by entering its\nunique primary key or Roll Number.",],[6,"Update","Modify values in an existing record field by field. Press ENTER\nwithout typing to keep existing data unchanged.",],[7,"Help","Display this detailed navigation guide and system commands overview.",],[8,"Exit","Safely save all current operations, close database files, and terminate\nthe program session.",],]                          
         headers = ["Option", "Action", "Description"]
-        print(tabulate.tabulate(help_data,headers,tablefmt="fancy_grid"))
+        print(tabulate(help_data,headers,tablefmt="rounded_grid"))
     elif option.lower()=="del":
         delete_data_database()
     elif option.lower()=="export":
+        clear_screen()
         database=load_database()
         export_file_as_excel(database)
     elif option.lower()=="exit" or option=="8":
+        clear_screen()
         print("""Kicking you out of the program......
 DONE.""")
         break
     else:
+        clear_screen()
         print("input valid option create/search")
     print("#" * 100)
