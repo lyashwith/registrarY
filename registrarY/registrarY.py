@@ -369,7 +369,7 @@ DONE.""")
         break
     elif option.lower()=="menu" or option=="":
         clear_screen()
-        headers["Option","Cammand"]
+        headers=["Option","Cammand"]
         max_col_width = max(10, screen_size // len(headers))
         print(tabulate(menu,headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
     else:
