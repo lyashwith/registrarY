@@ -88,6 +88,7 @@ def clear_screen():
         sub_run(['cls'],shell=True)
     else:
         sub_run(['clear'])
+    print(registrarY_text)
 
 def custom_schema():
     primary_key=input("Enter unique primary key field:")
@@ -168,17 +169,21 @@ def update_database():
         print("Enter the new details to update the database or press ENTER KEY to keep the original values")
         for field_name, value in database[primary_key].items():
             new_value = input(f"      {field_name} (current value: {value}): ")
-            if new_value != "":
-                database[primary_key][field_name] = new_value
+            schema=load_custom_schema()
+            for ii in schema.keys():
+                primary_key_name=ii
+            datatype=schema[primary_key_name][field_name]
+            if datatype=="int" and new_value!="":
+                database[primary_key][field_name] = int(new_value)
+            elif datatype=="float" and new_value!="":
+                database[primary_key][field_name] = float(new_value)
+            elif (datatype=="str" or datatype=="string") and new_value!="":
+                database[primary_key][field_name] = str(new_value)
         
         with open(f"{database_name}.eL", "w") as file:
             dump(database,file)
-        print("Database Updated")
-        print("=" * 100)
-        print(f"      Primary key: {primary_key}")
-        print("-" * 100)
-        for field_name, value in database[primary_key].items():
-            print(f"      {field_name}: {value}")
+        print("Database Updated\nCurrent Table:")
+        search_database(primary_key)
     else:
         print("roll number",primary_key,"not found in the database")
 
@@ -223,15 +228,35 @@ def database_name_taker():
             if question1.lower()=="y" or question1.lower()=="yes":
                 with open(f"{database_name}.eL", "w") as file:
                     dump({},file)
+                clear_screen()
+            else:
+                clear_screen()
+                continue
             return database_name
         except Exception as e:
             print(f"Error occured\nError name:{e}")
+
+
+registrarY_text=r"""
+                                 __             __                               _____ ___ 
+    _______    ____      ____   |__|   ______ _/  |_  _______  _____    _______  \__  |   |
+    \_  __ \ _/ __ \    / ___\  |  |  /  ___/ \   __\ \_  __ \ \__  \   \_  __ \  /   |   |
+     |  | \/ \  ___/   / /_/  > |  |  \___ \   |  |    |  | \/  / __ \_  |  | \/  \____   |
+     |__|     \___  >  \___  /  |__| /____  >  |__|    |__|    (____  /  |__|     / ______|
+                  \/  /_____/             \/                        \/            \/       """
+
+
+
+print(registrarY_text,"\n\n")
 database_name=database_name_taker()
+menu = [["(1)", "Create default"],["(2)", "Create custom Schema"],["(3)", "Add data"],["(4)", "View all"],["(5)", "Search"],["(6)", "Update"],["(7)", "Delete"],["(8)", "Export"],["(9)", "Help"],["(10)", "Exit"]]
+number_for_check=0
 while True:
-    menu = [["(1)", "Create default"],["(2)", "Create custom Schema"],["(3)", "Add data"],["(4)", "View all"],["(5)", "Search"],["(6)", "Update"],["(7)", "Delete"],["(8)", "Export"],["(9)", "Help"],["(10)", "Exit"]]
-    print("What do you want to do? ")
-    print(tabulate(menu,tablefmt="rounded_grid"))
-    option=str(input("Enter your option >>>"))
+    print("What do you want to do?\nType Menu for printing menu/Help for Help ")
+    if number_for_check==0:
+        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
+        number_for_check=1
+    option=str(input("Enter your option/command >>>"))
     if option.lower()=="create default" or option=="1":
         clear_screen()
         create_default_database()
@@ -316,6 +341,9 @@ while True:
         print("""Kicking you out of the program......
 DONE.""")
         break
+    elif option.lower()=="menu" or option=="":
+        clear_screen()
+        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
     else:
         clear_screen()
         print("input valid option create/search")
