@@ -205,7 +205,7 @@ def update_database():
         print("Database Updated\nCurrent Table:")
         search_database(primary_key)
     else:
-        print("roll number",primary_key,"not found in the database")
+        print("Primary Key",primary_key,"not found in the database")
 
 def delete_data_database():
     database=load_database()
