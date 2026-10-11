@@ -1,8 +1,10 @@
 from json import dump,load
 from os import name as os_name
+from os import get_terminal_size
 from subprocess import run as sub_run
 from tabulate import tabulate
 __lazy_modules__ = ["openpyxl","subprocess","os"]
+screen_size=get_terminal_size().columns
 def create_default_database():
     while True:
         try:
@@ -159,7 +161,8 @@ def add_custom_data():
 def view_all():
     database = load_database()
     headers,rows=table_loader(database,"all","")
-    print(tabulate(rows,headers,tablefmt="rounded_grid"))
+    max_col_width = max(10, screen_size // len(headers))
+    print(tabulate(rows,headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
 def search_database(primary_key):
     database=load_database()
 
@@ -167,7 +170,8 @@ def search_database(primary_key):
         headers,table_list=table_loader(database,"single",primary_key)
         for i,j in enumerate(table_list):
             if primary_key in j:
-                print(tabulate([table_list[i]],headers,tablefmt="rounded_grid"))
+                max_col_width = max(10, screen_size // len(headers))
+                print(tabulate([table_list[i]],headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
     else:
         print("roll number",primary_key,"not found in the database")
 
@@ -274,7 +278,9 @@ number_for_check=0
 while True:
     print("What do you want to do?\nType Menu for printing menu/Help for Help ")
     if number_for_check==0:
-        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
+        headers=["Option","Cammand"]
+        max_col_width = max(10, screen_size // len(headers))
+        print(tabulate(menu,headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
         number_for_check=1
     option=str(input("Enter your option/command >>>"))
     if option.lower()=="create default" or option=="1":
@@ -346,16 +352,16 @@ while True:
      "The first row contains column headers formatted in bold, followed \n"
      "by the database records. Requires the openpyxl package.\n"],
 
-    [9, "Help\n",
-     "Display this navigation guide, including menu options, feature \n"
-     "descriptions, and supported commands for managing the database.\n"],
+    [9, "Help",
+     "Display this navigation guide, including menu options, feature "
+     "descriptions, and supported commands for managing the database."],
 
-    [10, "Exit\n",
-     "Terminate the registrarY session. Database modifications are \n"
-     "saved by their respective operations before exiting.\n"]
+    [10, "Exit",
+     "Terminate the registrarY session. Database modifications are saved by their respective operations before exiting."]
 ]
         headers = ["Option", "Action", "Description"]
-        print(tabulate(help_data,headers,tablefmt="rounded_grid"))
+        max_col_width = max(10, screen_size // len(headers))
+        print(tabulate(help_data,headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
     elif option.lower()=="exit" or option=="10":
         clear_screen()
         print("""Kicking you out of the program......
@@ -363,9 +369,13 @@ DONE.""")
         break
     elif option.lower()=="menu" or option=="":
         clear_screen()
-        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
+        headers["Option","Cammand"]
+        max_col_width = max(10, screen_size // len(headers))
+        print(tabulate(menu,headers,tablefmt="rounded_grid",maxcolwidths=max_col_width))
     else:
         clear_screen()
-        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
+        headers=["Option","Cammand"]
+        max_col_width = max(10, screen_size // len(headers))
+        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid",maxcolwidths=max_col_width))
         print("input valid option create/search")
     print("#" * 100)
