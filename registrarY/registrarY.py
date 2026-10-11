@@ -69,19 +69,30 @@ def load_custom_schema():
         print(f"Database file not found: {e}")
 
 
-def table_loader(database):
-    headers=[]
+def table_loader(database,num,primary_key):
     schema=load_custom_schema()
-    for i,j in schema.items():
-        headers.append(i)
-        headers.extend(j.keys())
+    headers=[]
     rows=[]
-    for a,b in database.items():
-        rown=[a]
-        for k,v in b.items():
-            rown.append(v)
-        rows.append(rown)
-    return headers,rows
+    if num=="all":
+        for i,j in schema.items():
+            headers.append(i)
+            headers.extend(j.keys())
+        for a,b in database.items():
+            rown=[a]
+            for k,v in b.items():
+                rown.append(v)
+            rows.append(rown)
+        return headers,rows
+    elif num=="single":
+        if primary_key in database:
+            record = database[primary_key]
+            for i,j in schema.items():
+                headers.append(i)
+                headers.extend(j.keys())
+            rows = [[primary_key] + list(record.values())]
+        return headers,rows
+
+
 
 def clear_screen():
     if os_name=="nt":
@@ -147,18 +158,19 @@ def add_custom_data():
 
 def view_all():
     database = load_database()
-    headers,rows=table_loader(database)
+    headers,rows=table_loader(database,"all","")
     print(tabulate(rows,headers,tablefmt="rounded_grid"))
 def search_database(primary_key):
     database=load_database()
 
     if primary_key in database:
-        headers,table_list=table_loader(database)
+        headers,table_list=table_loader(database,"single",primary_key)
         for i,j in enumerate(table_list):
             if primary_key in j:
                 print(tabulate([table_list[i]],headers,tablefmt="rounded_grid"))
     else:
         print("roll number",primary_key,"not found in the database")
+
 def update_database():
     database=load_database()
     
@@ -168,18 +180,26 @@ def update_database():
         search_database(primary_key)
         print("Enter the new details to update the database or press ENTER KEY to keep the original values")
         for field_name, value in database[primary_key].items():
-            new_value = input(f"      {field_name} (current value: {value}): ")
             schema=load_custom_schema()
             for ii in schema.keys():
                 primary_key_name=ii
             datatype=schema[primary_key_name][field_name]
-            if datatype=="int" and new_value!="":
-                database[primary_key][field_name] = int(new_value)
-            elif datatype=="float" and new_value!="":
-                database[primary_key][field_name] = float(new_value)
-            elif (datatype=="str" or datatype=="string") and new_value!="":
-                database[primary_key][field_name] = str(new_value)
-        
+            while True:
+                new_value = input(f"      {field_name} (current value: {value}): ")
+                if new_value=="":
+                    break
+                try:
+                    if datatype=="int" and new_value!="":
+                        database[primary_key][field_name] = int(new_value)
+                        break
+                    elif datatype=="float" and new_value!="":
+                        database[primary_key][field_name] = float(new_value)
+                        break
+                    elif (datatype=="str" or datatype=="string") and new_value!="":
+                        database[primary_key][field_name] = str(new_value)
+                        break
+                except ValueError:
+                    print(f"Invalid value! Expected data type: {datatype}")
         with open(f"{database_name}.eL", "w") as file:
             dump(database,file)
         print("Database Updated\nCurrent Table:")
@@ -206,7 +226,7 @@ def export_file_as_excel(database):
     wbk=workbook()
     wak=wbk.active
     wak.title=f"{database_name}"
-    headers,rows=table_loader(database)
+    headers,rows=table_loader(database,"all","")
     wak.append(headers)
     for i in rows:
         wak.append(i)
@@ -346,5 +366,6 @@ DONE.""")
         print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
     else:
         clear_screen()
+        print(tabulate(menu,["Option","Cammand"],tablefmt="rounded_grid"))
         print("input valid option create/search")
     print("#" * 100)
