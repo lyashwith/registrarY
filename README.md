@@ -6,7 +6,7 @@
                           \/  /_____/             \/                        \/            \/       
 
 
-[![Download v1.35 Beta](https://img.shields.io/badge/Download-v1.35_Beta-0078D4?style=flat&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
+[![Download v1.36beta](https://img.shields.io/badge/Download-v1.36_beta-0078D4?style=flat&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.36beta/registrarY.v1.36beta.exe)
 [![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=flat&logo=python&logoColor=white)](https://www.python.org/)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/lyashwith/registrarY)
 
@@ -90,7 +90,7 @@ A pre-built Windows executable is available for users who prefer not to run the 
 
 **Latest listed executable: v1.35 Beta**
 
-[Download registrarY v1.35 Beta](https://github.com/lyashwith/registrarY/releases/download/1.35beta/registrarY.1.35beta.exe)
+[![Download v1.36beta](https://img.shields.io/badge/Download-v1.36_beta-0078D4?style=flat&logo=windows11&logoColor=white)](https://github.com/lyashwith/registrarY/releases/download/v1.36beta/registrarY.v1.36beta.exe)
 
 [View all repository releases](https://github.com/lyashwith/registrarY/releases)
 
