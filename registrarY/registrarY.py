@@ -5,7 +5,7 @@ from subprocess import run as sub_run
 from tabulate import tabulate
 __lazy_modules__ = ["openpyxl","subprocess","os"]
 screen_size=get_terminal_size().columns
-def create_default_database():
+def create_default_database():                                                #soon to be removed
     while True:
         try:
             num_entry=int(input("Enter the number of entries you want to add: "))
