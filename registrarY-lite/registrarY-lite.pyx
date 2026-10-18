@@ -1,2 +1,2 @@
-cdef int of i
+cdef int i
 cpdef 
