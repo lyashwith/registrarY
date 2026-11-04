@@ -14,6 +14,10 @@
 
 The project explores Python dictionaries, file handling, JSON serialization, schema-based data entry, and basic database management.
 
+##CLI
+
+![registrarY Preview](https://raw.githubusercontent.com/lyashwith/registrarY/main/Documents/IMG-20261011-WA0001.jpg)
+
 ## Features
 
 - **Database selection:** Enter a database name at startup and create a new database when the corresponding file does not exist.
