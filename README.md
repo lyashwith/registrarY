@@ -14,9 +14,12 @@
 
 The project explores Python dictionaries, file handling, JSON serialization, schema-based data entry, and basic database management.
 
-##CLI
+## CLI
 
 ![registrarY Preview](https://raw.githubusercontent.com/lyashwith/registrarY/main/Documents/IMG-20261011-WA0001.jpg)
+
+![registrarY Preview](https://raw.githubusercontent.com/lyashwith/registrarY/refs/heads/main/Documents/IMG-20261011-WA0002.jpg)
+
 
 ## Features
 
